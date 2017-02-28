@@ -3,6 +3,7 @@ program GarTime2;
 uses
   Forms,
   GarTimeForm in 'GarTimeForm.pas' {MainForm};
+  
 
 {$R *.res}
 

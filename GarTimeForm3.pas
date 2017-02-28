@@ -5,7 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Menus, ActnList, ImgList, AppEvnts,
-  CoolTrayIcon, AutoRunner, gtTypes, ddAppConfigTypes;
+  CoolTrayIcon, AutoRunner, gtTypes
+  {$IFDEF GarTime}
+  , ddAppConfigTypes
+  {$ENDIF};
 
 type
   TMainForm = class(TForm)
@@ -39,7 +42,9 @@ type
   private
     f_AutoRunner: TAutoRunner;
     f_CanClose: Boolean;
+    {$IFDEF GarTime}
     f_Config: TddAppConfigNode;
+    {$ENDIF}
     f_HomeStr: string;
     f_MonthTimeStr: string;
     f_RealTimeStr: string;
@@ -71,11 +76,11 @@ implementation
 {$R *.dfm}
 
 Uses
- DateUtils, Math, StrUtils,
+ DateUtils, Math, StrUtils, IdHTTP
  {$IFDEF GarTime}
- jwaWTSApi32,
+ , jwaWTSApi32, ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
-  ddAppConfigUtils, l3String, IdHTTP, l3Base, ddConfigStorages, l3SysUtils;
+  ;
 
 const
  mdpStart = 1;
@@ -83,8 +88,10 @@ const
 
 procedure TMainForm.actConfigExecute(Sender: TObject);
 begin
+ {$IFDEF GarTime}
  if ExecuteNodeDialog(f_Config) then
   f_Config.Save(MakedefaultStorage);
+ {$ENDIF}
 end;
 
 procedure TMainForm.actExitExecute(Sender: TObject);
@@ -101,7 +108,7 @@ end;
 procedure TMainForm.actShowStatisticExecute(Sender: TObject);
 begin
  TrayIcon.ShowBalloonHint('Учет рабочего времени',
-                          Format('Сегодня: %s'#10'%s'#10'Домой в:%s', [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
+                          Format('Сегодня: %s'#10'%s'#10'Домой в: %s', [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
 
 procedure TMainForm.AppEventsMessage(var Msg: tagMSG;
@@ -141,9 +148,12 @@ begin
 end;
 
 procedure TMainForm.CreateConfig;
+{$IFDEF GarTime}
 var
  l_Storage: IddConfigStorage;
+{$ENDIF}
 begin
+ {$IFDEF GarTime}
  f_Config := MakeNode('Config', 'Конфигурация',
               //MakeDivider('Общие настройки',
               //MakeDivider('Confluence',
@@ -158,6 +168,7 @@ begin
  finally
   l_Storage:= nil;
  end;
+ {$ENDIF}
 end;
 
 function TMainForm.DataFileName: string;
@@ -167,8 +178,10 @@ end;
 
 procedure TMainForm.DestroyConfig;
 begin
+ {$IFDEF GarTime}
  f_Config.Save(MakedefaultStorage);
  FreeAndNil(f_Config);
+ {$ENDIF}
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -281,8 +294,10 @@ end;
 
 procedure TMainForm.Start;
 begin
+ {$IFDEF GarTime}
  if not l3IsRemoteSession then
  begin
+ {$ENDIF}
   f_Timer.Start;
   timeUpdate.Enabled:= True;
   itemStartStop.Action:= actStop;
@@ -290,7 +305,9 @@ begin
   SwitchMDPStatus(mdpStart);
   {$ENDIF}
   UpdateDayInfo;
+ {$IFDEF GarTime}
  end; // not l3IsRemoteSession
+ {$ENDIF}
 end;
 
 function TMainForm.Started: Boolean;
@@ -320,6 +337,7 @@ procedure TMainForm.SwitchMDPStatus(aStatus: Integer);
 var
  l_Request: ShortString;
 begin
+ {$IFDEF GarTime}
  l_Request:= Format('http://mdp.garant.ru/ru/garant/MDProcess/ConfluenceMDChange/RequestSupport/RequestXPlugin/RequestXPackage/changeactiveuserstate.action?type=%d&os_password=%s&os_username=%s',
                     [aStatus, f_Config.AsString['mdpPassword'], f_Config.AsString['mdpLogin']]);
  with TidHTTP.Create do
@@ -333,6 +351,7 @@ begin
  finally
   Free;
  end
+ {$ENDIF}
 end;
 
 procedure TMainForm.timeUpdateTimer(Sender: TObject);
@@ -355,7 +374,7 @@ var
 begin
  // Сколько отработано сегодня по-настоящему
  f_RealTimeStr:= f_Timer.DaySheet(l_Minutes, l_GarMinutes);
- f_HomeStr:= DateTimeTo
+ f_HomeStr:= TimeToStr(IncMinute(Time, 8*60 - l_Minutes));          // 8 - отработанное время + сейчас
  {$IFDEF GarTime}
  // Сколько сегодня отработано по-гарантовски
  DivMod(l_Minutes, 60, l_Hours, l_Min);

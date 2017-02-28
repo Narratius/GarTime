@@ -75,8 +75,7 @@ implementation
 {$R *.dfm}
 
 Uses
- DateUtils, Math, StrUtils,
-  jwaWTSApi32;
+ DateUtils, Math, StrUtils;
 
 
 
@@ -111,7 +110,6 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
  AutoRunner1.AutoRun:= True;
- WTSRegisterSessionNotification(Handle, 0);
  timeUpdate.Interval:= 1000*60; // 1 минута
  f_Start:= 0;
  f_Pause:= 0;
@@ -328,7 +326,6 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
- WTSUnRegisterSessionNotification(Handle);
  SaveDayInfo;
 end;
 

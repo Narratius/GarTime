@@ -30,7 +30,6 @@ type
     N5: TMenuItem;
     ApplicationEvents1: TApplicationEvents;
     TrayIcon: TCoolTrayIcon;
-    AutoRunner1: TAutoRunner;
     procedure btStartClick(Sender: TObject);
     procedure btPauseClick(Sender: TObject);
     procedure btStopClick(Sender: TObject);
@@ -47,6 +46,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
+    f_AutoRunner: TAutoRunner;
     f_Start: TDateTime;
     f_Pause: TDateTime;
     f_ShowBalloon: Boolean;
@@ -109,7 +109,8 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
- AutoRunner1.AutoRun:= True;
+ f_AutoRunner:= TAutoRunner.Create(Self);
+ f_AutoRunner.AutoRun:= True;
  timeUpdate.Interval:= 1000*60; // 1 минута
  f_Start:= 0;
  f_Pause:= 0;
@@ -326,6 +327,7 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
+ FreeAndNil(f_AutoRunner);
  SaveDayInfo;
 end;
 

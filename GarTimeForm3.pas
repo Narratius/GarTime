@@ -15,7 +15,6 @@ type
     actStart: TAction;
     actStop: TAction;
     AppEvents: TApplicationEvents;
-    AutoRunner1: TAutoRunner;
     IconImages: TImageList;
     itemExit: TMenuItem;
     itemStartStop: TMenuItem;
@@ -38,6 +37,7 @@ type
     procedure timeUpdateTimer(Sender: TObject);
     procedure TrayIconStartup(Sender: TObject; var ShowMainForm: Boolean);
   private
+    f_AutoRunner: TAutoRunner;
     f_CanClose: Boolean;
     f_Config: TddAppConfigNode;
     f_HomeStr: string;
@@ -72,7 +72,10 @@ implementation
 
 Uses
  DateUtils, Math, StrUtils,
- jwaWTSApi32, ddAppConfigUtils, l3String, IdHTTP, l3Base, ddConfigStorages, l3SysUtils;
+ {$IFDEF GarTime}
+ jwaWTSApi32,
+ {$ENDIF}
+  ddAppConfigUtils, l3String, IdHTTP, l3Base, ddConfigStorages, l3SysUtils;
 
 const
  mdpStart = 1;
@@ -182,8 +185,11 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
  f_CanClose:= True;
- AutoRunner1.AutoRun:= True;
+ f_AutoRunner:= TAutoRunner.Create(Self);
+ f_AutoRunner.AutoRun:= True;
+ {$IFDEF GarTime}
  WTSRegisterSessionNotification(Handle, 0);
+ {$ENDIF}
  CreateConfig;
  try
   f_Timer := TgtTimer.Create();
@@ -202,7 +208,10 @@ begin
  //SaveDayInfo;
  DestroyConfig;
  FreeAndNil(f_Timer);
+ FreeAndNil(f_AutoRunner);
+ {$IFDEF GarTime}
  WTSUnRegisterSessionNotification(Handle);
+ {$ENDIF}
 end;
 
 function TMainForm.GetHint: string;
@@ -277,7 +286,9 @@ begin
   f_Timer.Start;
   timeUpdate.Enabled:= True;
   itemStartStop.Action:= actStop;
+  {$IFDEF GarTime}
   SwitchMDPStatus(mdpStart);
+  {$ENDIF}
   UpdateDayInfo;
  end; // not l3IsRemoteSession
 end;
@@ -298,7 +309,9 @@ begin
   timeUpdate.Enabled:= False;
   SaveDayInfo;
   itemStartStop.Action:= actStart;
+  {$IFDEF GarTime}
   SwitchMDPStatus(mdpStop);
+  {$ENDIF}
   UpdateDayInfo;
  end;
 end;

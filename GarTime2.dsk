@@ -1,22 +1,29 @@
 [Modules]
-Module0=C:\#My Work\GarTime\GarTimeForm.pas
-Module1=C:\#My Work\GarTime\GarTime2.dproj
-Count=2
+Module0=C:\#My Work\GarTime\GarTimeForm3.pas
+Module1=C:\#My Work\GarTime\GarTimeForm.pas
+Module2=C:\#My Work\GarTime\GarTime2.dproj
+Count=3
 EditWindowCount=1
+
+[C:\#My Work\GarTime\GarTimeForm3.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
 
 [C:\#My Work\GarTime\GarTimeForm.pas]
 ModuleType=TSourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
 [C:\#My Work\GarTime\GarTime2.dproj]
 ModuleType=TBaseProject
 
 [EditWindow0]
-ViewCount=2
-CurrentEditView=C:\#My Work\GarTime\GarTimeForm.pas
+ViewCount=3
+CurrentEditView=C:\#My Work\GarTime\GarTimeForm3.pas
 View0=0
 View1=1
+View2=2
 PercentageSizes=1
 Create=1
 Visible=1
@@ -50,8 +57,8 @@ BottomMiddelPanelData=0000080001000100000009000000446F636B53697465302D1900000000
 [View0]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\GarTime2.dpr
-CursorX=1
-CursorY=1
+CursorX=12
+CursorY=5
 TopLine=1
 LeftCol=1
 Elisions=
@@ -61,13 +68,24 @@ EditViewName=C:\#My Work\GarTime\GarTime2.dpr
 [View1]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\GarTimeForm.pas
-CursorX=39
-CursorY=19
-TopLine=1
+CursorX=1
+CursorY=1
+TopLine=199
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\#My Work\GarTime\GarTimeForm.pas
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\#My Work\GarTime\GarTimeForm3.pas
+CursorX=1
+CursorY=336
+TopLine=315
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\#My Work\GarTime\GarTimeForm3.pas
 
 [Watches]
 Count=3
@@ -76,7 +94,7 @@ Watch1='DateTimeToStr(l_Start)',256,0,18,1,1,'Watches'
 Watch2='l_Start - (Now - l_Pause)',256,0,18,1,1,'Watches'
 
 [WatchWindow]
-WatchColumnWidth=100
+WatchColumnWidth=120
 WatchShowColumnHeaders=1
 PercentageSizes=1
 Create=1
@@ -384,6 +402,11 @@ LRDockWidth=1891
 Dockable=1
 StayOnTop=0
 SplitPos=111
+
+[PropInspDesignerSelection]
+ArrangeBy=Category
+SelectedItem=Action,
+ExpandedItems=Action=1,"Drag Drop/Docking=1","Help and Hints=1",Input=1,Layout=1,Legacy=1,Linkage=1,Locale=1,Localizable=1,Miscellaneous=1,Visual=1
 
 [ModelViewTool]
 PercentageSizes=1

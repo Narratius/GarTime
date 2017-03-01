@@ -1,11 +1,11 @@
 unit GarTimeForm3;
 
 interface
-{.$DEFINE GarTime}
+{.$DEFINE GarTime} // Для синхронизации с Confluence нужно включить
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Menus, ActnList, ImgList, AppEvnts,
-  CoolTrayIcon, AutoRunner, gtTypes
+  CoolTrayIcon, AutoRunner, gtIntfs
   {$IFDEF GarTime}
   , ddAppConfigTypes
   {$ENDIF};
@@ -49,7 +49,7 @@ type
     f_MonthTimeStr: string;
     f_RealTimeStr: string;
     f_ShowBalloon: Boolean;
-    f_Timer: TgtTimer;
+    f_Timer: IgtTimer;
     procedure CreateConfig;
     function DataFileName: string;
     procedure DestroyConfig;
@@ -76,7 +76,7 @@ implementation
 {$R *.dfm}
 
 Uses
- DateUtils, Math, StrUtils, IdHTTP
+ DateUtils, Math, StrUtils, IdHTTP, gtTypes
  {$IFDEF GarTime}
  , jwaWTSApi32, ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
@@ -108,7 +108,8 @@ end;
 procedure TMainForm.actShowStatisticExecute(Sender: TObject);
 begin
  TrayIcon.ShowBalloonHint('Учет рабочего времени',
-                          Format('Сегодня: %s'#10'%s'#10'Домой в: %s', [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
+                          Format('Сегодня: %s'#10'%s'#10'Домой в: %s',
+                          [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
 
 procedure TMainForm.AppEventsMessage(var Msg: tagMSG;
@@ -205,7 +206,7 @@ begin
  {$ENDIF}
  CreateConfig;
  try
-  f_Timer := TgtTimer.Create();
+  f_Timer := TgtXMLTimer.Create();
   timeUpdate.Interval:= 1000*60; // 1 минута
   f_ShowBalloon:= False;
   LoadDayInfo;

@@ -2,7 +2,9 @@ program GarTime3;
 {$UNDEF OVP}
 uses
   Forms,
-  GarTimeForm3 in 'GarTimeForm3.pas' {MainForm};
+  GarTimeForm3 in 'GarTimeForm3.pas' {MainForm},
+  gtIntfs in 'gtIntfs.pas',
+  gtSQL in 'gtSQL.pas';
 
 {$R *.res}
 

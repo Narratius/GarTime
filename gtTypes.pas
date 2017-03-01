@@ -1,12 +1,15 @@
 unit gtTypes;
 
+{  лассы, вычисл€ющие врем€ }
+
 interface
 
 uses
- xmlIntf;
+ xmlIntf,
+ gtIntfs;
 
 type
- TgtTimer = class(TObject)
+ TgtXMLTimer = class(TInterfacedObject, IgtTimer)
  private
   f_TimeSheet: IXMLDocument;
   f_Root: IXMLNode;
@@ -18,7 +21,7 @@ type
   function GetDayName: string;
   procedure GetDaySheet(aDay: IXMLNode; out theSheet: Integer);
   function GetMonthName: string;
-  function pm_GetIsStarted: Boolean;
+  function GetIsStarted: Boolean;
  public
   constructor Create;
   destructor Destroy; override;
@@ -30,7 +33,7 @@ type
   procedure Start;
   procedure Stop;
   function MinutesToString(aMinutes: Int64): ShortString;
-  property IsStarted: Boolean read pm_GetIsStarted;
+  property IsStarted: Boolean read GetIsStarted;
  end;
 
 implementation
@@ -38,7 +41,7 @@ implementation
 uses
  XMLDoc, SysUtils, DateUtils, StrUtils;
 
-constructor TgtTimer.Create;
+constructor TgtXMLTimer.Create;
 begin
  inherited;
  f_TimeSheet:= TXMLDocument.Create(nil);
@@ -48,13 +51,13 @@ begin
  f_Started:= False;
 end;
 
-destructor TgtTimer.Destroy;
+destructor TgtXMLTimer.Destroy;
 begin
  f_TimeSheet:= nil;
  inherited;
 end;
 
-function TgtTimer.AddDay: IXMLNode;
+function TgtXMLTimer.AddDay: IXMLNode;
 var
  l_Month: IXMLNode;
  l_Day: IXMLNode;
@@ -69,7 +72,7 @@ begin
  Result:= l_Day;
 end;
 
-function TgtTimer.AddMonth: IXMLNode;
+function TgtXMLTimer.AddMonth: IXMLNode;
 var
  l_Months, l_Month, l_Name, l_N3: IXMLNode;
  i: Integer;
@@ -99,7 +102,7 @@ begin
  end; // l_N = nil
 end;
 
-function TgtTimer.DaySheet(out theSheet, theGarSheet: Integer): string;
+function TgtXMLTimer.DaySheet(out theSheet, theGarSheet: Integer): string;
 var
  l_Day: IXMLNode;
  l_Sheet, l_Min: Integer;
@@ -120,7 +123,7 @@ begin
  {$ENDIF}
 end;
 
-procedure TgtTimer.StartPeriod;
+procedure TgtXMLTimer.StartPeriod;
 var
  l_Date: String;
 begin
@@ -132,7 +135,7 @@ begin
  end;
 end;
 
-procedure TgtTimer.StopPeriod;
+procedure TgtXMLTimer.StopPeriod;
 var
  l_Date: String;
  l_Day, l_Period: IXMLNode;
@@ -154,12 +157,12 @@ begin
  end; // for i
 end;
 
-function TgtTimer.GetDayName: string;
+function TgtXMLTimer.GetDayName: string;
 begin
  Result := Format('Day%d', [DayOf(Date)]);
 end;
 
-procedure TgtTimer.GetDaySheet(aDay: IXMLNode; out theSheet: Integer);
+procedure TgtXMLTimer.GetDaySheet(aDay: IXMLNode; out theSheet: Integer);
 var
  i: Integer;
  l_Periods: IXMLNode;
@@ -194,23 +197,23 @@ begin
  end; // for i;
 end;
 
-function TgtTimer.GetMonthName: string;
+function TgtXMLTimer.GetMonthName: string;
 begin
  Result := Format('%d-%d', [YearOf(Date), MonthOf(Date)]);
 end;
 
-function TgtTimer.pm_GetIsStarted: Boolean;
+function TgtXMLTimer.GetIsStarted: Boolean;
 begin
  Result := f_Started;
 end;
 
-procedure TgtTimer.LoadFromFile(const aFileName: String);
+procedure TgtXMLTimer.LoadFromFile(const aFileName: String);
 begin
  f_TimeSheet.LoadFromFile(aFileName);
  f_Root:= f_TimeSheet.Node.ChildNodes.First;
 end;
 
-function TgtTimer.MonthSheet(out theSheet, theGarSheet: Integer; aTotal: Boolean): string;
+function TgtXMLTimer.MonthSheet(out theSheet, theGarSheet: Integer; aTotal: Boolean): string;
 var
  l_Month, l_Day: IXMLNode;
  i, l_Sheet, l_DayCount: Integer;
@@ -240,17 +243,17 @@ begin
  Result:= MinutesToString(theSheet);
 end;
 
-procedure TgtTimer.Pause;
+procedure TgtXMLTimer.Pause;
 begin
  StopPeriod;
 end;
 
-procedure TgtTimer.SaveToFile(const aFileName: String);
+procedure TgtXMLTimer.SaveToFile(const aFileName: String);
 begin
  f_TimeSheet.SaveToFile(aFileName);
 end;
 
-procedure TgtTimer.Start;
+procedure TgtXMLTimer.Start;
 begin
  AddMonth;
  AddDay;
@@ -258,14 +261,14 @@ begin
  f_Started:= True;
 end;
 
-procedure TgtTimer.Stop;
+procedure TgtXMLTimer.Stop;
 begin
  if IsStarted then
   StopPeriod;
  f_Started:= False;
 end;
 
-function TgtTimer.MinutesToString(aMinutes: Int64): ShortString;
+function TgtXMLTimer.MinutesToString(aMinutes: Int64): ShortString;
 var
  l_Day, l_Hour, l_Min: Longint;
 begin

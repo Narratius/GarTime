@@ -32,14 +32,14 @@ type
   procedure SaveToFile(const aFileName: String);
   procedure Start;
   procedure Stop;
-  function MinutesToString(aMinutes: Int64): ShortString;
   property IsStarted: Boolean read GetIsStarted;
  end;
 
 implementation
 
 uses
- XMLDoc, SysUtils, DateUtils, StrUtils;
+ XMLDoc, SysUtils, DateUtils, StrUtils,
+ gtUtils;
 
 constructor TgtXMLTimer.Create;
 begin
@@ -49,10 +49,13 @@ begin
  f_TimeSheet.Active:= True;
  f_Root:= f_TimeSheet.AddChild('GarTimeDataFile');
  f_Started:= False;
+ if FileExists(DataFileName) then
+  LoadFromFile(DataFileName);
 end;
 
 destructor TgtXMLTimer.Destroy;
 begin
+ SaveToFile(DataFilename);
  f_TimeSheet:= nil;
  inherited;
 end;
@@ -268,23 +271,5 @@ begin
  f_Started:= False;
 end;
 
-function TgtXMLTimer.MinutesToString(aMinutes: Int64): ShortString;
-var
- l_Day, l_Hour, l_Min: Longint;
-begin
-  l_Day:= aMinutes div (24*60);
-  l_Hour:= (aMinutes mod (24*60)) div 60;
-  l_Min:=  (aMinutes mod (24*60)) mod 60;
-  if l_Day > 1 then
-   Result:= Format('%2d дня %2d час', [l_Day, Abs(l_Hour)])
-  else
-  if Abs(l_Hour) > 0 then
-   Result:= Format('%2d час %2d мин', [l_Hour, Abs(l_Min)])
-  else
-  if Abs(l_Min) > 0 then
-   Result:= Format('%2d мин', [l_Min])
-  else
-    Result:= 'меньше минуты';
-end;
 
 end.

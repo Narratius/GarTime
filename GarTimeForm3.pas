@@ -51,7 +51,6 @@ type
     f_ShowBalloon: Boolean;
     f_Timer: IgtTimer;
     procedure CreateConfig;
-    function DataFileName: string;
     procedure DestroyConfig;
     function GetHint: string;
     function getHoursStr(aHours: Word): string;
@@ -76,7 +75,7 @@ implementation
 {$R *.dfm}
 
 Uses
- DateUtils, Math, StrUtils, IdHTTP, gtTypes
+ DateUtils, Math, StrUtils, IdHTTP, gtSQL//gtTypes
  {$IFDEF GarTime}
  , jwaWTSApi32, ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
@@ -172,10 +171,6 @@ begin
  {$ENDIF}
 end;
 
-function TMainForm.DataFileName: string;
-begin
- Result := ChangeFileExt(Application.ExeName, '.dat');
-end;
 
 procedure TMainForm.DestroyConfig;
 begin
@@ -206,7 +201,7 @@ begin
  {$ENDIF}
  CreateConfig;
  try
-  f_Timer := TgtXMLTimer.Create();
+  f_Timer := TgtSQLTimer.Create();
   timeUpdate.Interval:= 1000*60; // 1 минута
   f_ShowBalloon:= False;
   LoadDayInfo;
@@ -221,7 +216,7 @@ procedure TMainForm.FormDestroy(Sender: TObject);
 begin
  //SaveDayInfo;
  DestroyConfig;
- FreeAndNil(f_Timer);
+ f_Timer:= nil;
  FreeAndNil(f_AutoRunner);
  {$IFDEF GarTime}
  WTSUnRegisterSessionNotification(Handle);
@@ -260,8 +255,6 @@ end;
 
 procedure TMainForm.LoadDayInfo;
 begin
- if FileExists(DataFileName) then
-  f_Timer.LoadFromFile(DataFileName);
  UpdateDayInfo;
 end;
 
@@ -273,7 +266,7 @@ end;
 
 procedure TMainForm.SaveDayInfo;
 begin
- f_Timer.SaveToFile(DataFilename);
+ //f_Timer.SaveToFile(DataFilename);
 end;
 
 procedure TMainForm.ShowMainForm;

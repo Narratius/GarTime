@@ -4,7 +4,8 @@ uses
   Forms,
   GarTimeForm3 in 'GarTimeForm3.pas' {MainForm},
   gtIntfs in 'gtIntfs.pas',
-  gtSQL in 'gtSQL.pas';
+  gtSQL in 'gtSQL.pas',
+  gtUtils in 'gtUtils.pas';
 
 {$R *.res}
 

@@ -73,13 +73,13 @@ begin
  Result:= '';
  theSheet:= 0;
  theGarSheet:= 0;
- l_SQL:= 'select SUM(strftime("%s",[FinishTime])-strftime("%s",[StartTime])) / 60 as WorkTime ' +
+ l_SQL:= 'select SUM(strftime("%s",ifnull(FinishTime, time("now", "localtime")))-strftime("%s",[StartTime])) / 60 as WorkTime ' +
         'from TimeSheet where StartDate = date("now")';
  // Нужно получить l_Sheet
  l_Table:= f_DB.GetTable(l_SQL);
  try
    if l_Table.Count > 0 then
-     l_Sheet:= l_Table.FieldAsInteger(0);
+     l_Sheet:= l_Table.FieldAsInteger(0); //  Время, сохраненное в базе
  finally
    FreeAndNil(l_Table);
  end;
@@ -115,7 +115,7 @@ var
  l_Table: TSQLiteTable;
 begin
 // Количество минут за текущий месяц
-  l_SQL:= 'select SUM(strftime("%s",[FinishTime])-strftime("%s",[StartTime])) / 60 as WorkTime from TimeSheet '+
+  l_SQL:= 'select SUM(strftime("%s",ifnull(FinishTime, time("now", "localtime")))-strftime("%s",[StartTime])) / 60 as WorkTime from TimeSheet '+
  'where StartDate >= date("now","start of month") and StartDate <= date("now","start of month","+1 month","-1 day")';
  //получаем theSheet
  l_Table:= f_DB.GetTable(l_SQL);

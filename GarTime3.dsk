@@ -1,33 +1,31 @@
 [Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas',0,1,7175,48,7183,0,0,,
-File_1=TSourceModule,'C:\Users\Stud\Documents\RAD Studio\Projects\SQLTestForm.pas',0,1,20,45,21,0,0,,
-File_2=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas',0,1,42,14,93,0,0,,
-File_3=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas',0,1,395,39,399,0,0,,
-File_4=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas',0,1,18691,50,18699,0,0,,
+File_0=TSourceModule,'c:\#My Work\sqlite3\SQLiteTable3.pas',0,1,334,1,355,0,0,,
+File_1=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas',0,1,7175,48,7183,0,0,,
+File_2=TSourceModule,'C:\Users\Stud\Documents\RAD Studio\Projects\SQLTestForm.pas',0,1,20,45,21,0,0,,
+File_3=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas',0,1,42,14,93,0,0,,
+File_4=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas',0,1,395,39,399,0,0,,
+File_5=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas',0,1,18691,50,18699,0,0,,
 
 [Modules]
-Module0=C:\#My Work\GarTime\GarTimeForm3.pas
-Module1=C:\#My Work\GarTime\gtSQL.pas
-Module2=default.htm
-Module3=C:\#My Work\GarTime\GarTime3.dproj
-Module4=C:\#My Work\GarTime\gtTypes.pas
-Module5=C:\#My Work\GarTime\gtIntfs.pas
-Module6=C:\#My Work\GarTime\gtUtils.pas
+Module0=C:\#My Work\GarTime\gtSQL.pas
+Module1=C:\#My Work\GarTime\GarTimeForm3.pas
+Module2=C:\#My Work\GarTime\GarTime3.dproj
+Module3=C:\#My Work\GarTime\gtTypes.pas
+Module4=C:\#My Work\GarTime\gtIntfs.pas
+Module5=C:\#My Work\GarTime\gtUtils.pas
+Module6=default.htm
 Count=7
 EditWindowCount=1
-
-[C:\#My Work\GarTime\GarTimeForm3.pas]
-ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
 
 [C:\#My Work\GarTime\gtSQL.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[default.htm]
-ModuleType=TURLModule
+[C:\#My Work\GarTime\GarTimeForm3.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
 
 [C:\#My Work\GarTime\GarTime3.dproj]
 ModuleType=TBaseProject
@@ -47,9 +45,12 @@ ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
+[default.htm]
+ModuleType=TURLModule
+
 [EditWindow0]
 ViewCount=7
-CurrentEditView=C:\#My Work\GarTime\GarTimeForm3.pas
+CurrentEditView=C:\#My Work\GarTime\gtSQL.pas
 View0=0
 View1=1
 View2=2
@@ -94,9 +95,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\GarTimeForm3.pas
-CursorX=106
-CursorY=203
-TopLine=176
+CursorX=29
+CursorY=353
+TopLine=342
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -127,9 +128,9 @@ EditViewName=C:\#My Work\GarTime\gtUtils.pas
 [View4]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\gtSQL.pas
-CursorX=1
-CursorY=99
-TopLine=75
+CursorX=66
+CursorY=122
+TopLine=105
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -193,8 +194,8 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=10000
-Top=0
+Left=10797
+Top=366
 Width=8930
 Height=8526
 MaxLeft=-8
@@ -469,6 +470,11 @@ LRDockWidth=1891
 Dockable=1
 StayOnTop=0
 SplitPos=111
+
+[PropInspDesignerSelection]
+ArrangeBy=Category
+SelectedItem=Miscellaneous.Name,
+ExpandedItems=Action=1,"Drag Drop/Docking=1","Help and Hints=1",Input=1,Layout=1,Legacy=1,Linkage=1,Locale=1,Localizable=1,Miscellaneous=1,Visual=1
 
 [ModelViewTool]
 PercentageSizes=1

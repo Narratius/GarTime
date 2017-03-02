@@ -5,7 +5,8 @@ uses
   GarTimeForm3 in 'GarTimeForm3.pas' {MainForm},
   gtIntfs in 'gtIntfs.pas',
   gtSQL in 'gtSQL.pas',
-  gtUtils in 'gtUtils.pas';
+  gtUtils in 'gtUtils.pas',
+  gtLogFile in 'gtLogFile.pas';
 
 {$R *.res}
 

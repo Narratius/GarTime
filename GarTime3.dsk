@@ -1,41 +1,55 @@
 [Closed Files]
-File_0=TSourceModule,'c:\#My Work\sqlite3\SQLiteTable3.pas',0,1,334,1,355,0,0,,
-File_1=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas',0,1,7175,48,7183,0,0,,
+File_0=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Indy\Indy10\Core\IdLogFile.pas',0,1,113,3,113,0,0,,
+File_1=TSourceModule,'c:\#My Work\sqlite3\SQLiteTable3.pas',0,1,334,1,355,0,0,,
 File_2=TSourceModule,'C:\Users\Stud\Documents\RAD Studio\Projects\SQLTestForm.pas',0,1,20,45,21,0,0,,
-File_3=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas',0,1,42,14,93,0,0,,
-File_4=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas',0,1,395,39,399,0,0,,
-File_5=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas',0,1,18691,50,18699,0,0,,
 
 [Modules]
-Module0=C:\#My Work\GarTime\gtSQL.pas
-Module1=C:\#My Work\GarTime\GarTimeForm3.pas
+Module0=C:\#My Work\GarTime\GarTimeForm3.pas
+Module1=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas
 Module2=C:\#My Work\GarTime\GarTime3.dproj
-Module3=C:\#My Work\GarTime\gtTypes.pas
-Module4=C:\#My Work\GarTime\gtIntfs.pas
-Module5=C:\#My Work\GarTime\gtUtils.pas
-Module6=default.htm
-Count=7
+Module3=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas
+Module4=C:\#My Work\GarTime\gtLogFile.pas
+Module5=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas
+Module6=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\Classes.pas
+Module7=C:\#My Work\GarTime\gtUtils.pas
+Module8=c:\program files (x86)\codegear\rad studio\5.0\source\Indy\Indy10\Core\IdLogBase.pas
+Module9=C:\#My Work\GarTime\gtSQL.pas
+Module10=C:\#My Work\GarTime\gtIntfs.pas
+Module11=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas
+Module12=C:\#My Work\GarTime\gtTypes.pas
+Module13=default.htm
+Count=14
 EditWindowCount=1
-
-[C:\#My Work\GarTime\gtSQL.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
 
 [C:\#My Work\GarTime\GarTimeForm3.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=0
 
-[C:\#My Work\GarTime\GarTime3.dproj]
-ModuleType=TBaseProject
-
-[C:\#My Work\GarTime\gtTypes.pas]
+[c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\#My Work\GarTime\gtIntfs.pas]
+[C:\#My Work\GarTime\GarTime3.dproj]
+ModuleType=TBaseProject
+
+[c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\#My Work\GarTime\gtLogFile.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\Classes.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
@@ -45,12 +59,37 @@ ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
+[c:\program files (x86)\codegear\rad studio\5.0\source\Indy\Indy10\Core\IdLogBase.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\#My Work\GarTime\gtSQL.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\#My Work\GarTime\gtIntfs.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[C:\#My Work\GarTime\gtTypes.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
 [default.htm]
 ModuleType=TURLModule
 
 [EditWindow0]
-ViewCount=7
-CurrentEditView=C:\#My Work\GarTime\gtSQL.pas
+ViewCount=14
+CurrentEditView=C:\#My Work\GarTime\GarTimeForm3.pas
 View0=0
 View1=1
 View2=2
@@ -58,6 +97,13 @@ View3=3
 View4=4
 View5=5
 View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
 PercentageSizes=1
 Create=1
 Visible=1
@@ -65,25 +111,25 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=15000
-Height=9787
+Width=10000
+Height=9217
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=15000
-ClientHeight=9787
+ClientWidth=10000
+ClientHeight=9217
 DockedToMainForm=1
 MessageView=MessageView@EditWindow0
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
 LeftPanelSize=1891
 LeftPanelClients=StructureView,PropertyInspector
-LeftPanelData=000008000101000000009F170000000000000163070000000000000100000000580E00001100000053747275637475726556696577466F726D0100000000871D00001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=00000800010100000000E9150000000000000163070000000000000100000000580E00001100000053747275637475726556696577466F726D0100000000641B00001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=2000
 RightPanelClients=DockSite2,ToolForm
-RightPanelData=000008000101000000009F1700000000000001D00700000000000001000000004612000009000000446F636B53697465320100000000871D000008000000546F6F6C466F726DFFFFFFFF
+RightPanelData=00000800010100000000E91500000000000001D00700000000000001000000004612000009000000446F636B53697465320100000000641B000008000000546F6F6C466F726DFFFFFFFF
 BottomPanelSize=1816
 BottomPanelClients=MessageView@EditWindow0,DockSite1
-BottomPanelData=0000080001020100000009000000446F636B53697465313E4900000000000002180700000000000001000000003E4900000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=0000080001020100000009000000446F636B5369746531D4300000000000000218070000000000000100000000D43000000B0000004D65737361676556696577FFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0
 BottomMiddelPanelData=0000080001000100000009000000446F636B53697465302D1900000000000000771B000000000000FFFFFFFF
@@ -95,9 +141,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\GarTimeForm3.pas
-CursorX=29
-CursorY=353
-TopLine=342
+CursorX=9
+CursorY=8
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -105,38 +151,115 @@ EditViewName=C:\#My Work\GarTime\GarTimeForm3.pas
 
 [View2]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtTypes.pas
+Module=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas
 CursorX=1
-CursorY=147
-TopLine=141
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Messages.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas
+CursorX=1
+CursorY=18724
+TopLine=18705
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=C:\#My Work\GarTime\gtTypes.pas
+CursorX=20
+CursorY=256
+TopLine=231
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\#My Work\GarTime\gtTypes.pas
 
-[View3]
+[View5]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas
+CursorX=1
+CursorY=227
+TopLine=202
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\XML\XMLIntf.pas
+
+[View6]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\gtUtils.pas
 CursorX=1
-CursorY=7
+CursorY=21
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\#My Work\GarTime\gtUtils.pas
 
-[View4]
+[View7]
+CustomEditViewType=TEditView
+Module=C:\#My Work\GarTime\gtLogFile.pas
+CursorX=75
+CursorY=59
+TopLine=28
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\#My Work\GarTime\gtLogFile.pas
+
+[View8]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\Classes.pas
+CursorX=1
+CursorY=5465
+TopLine=5446
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\Classes.pas
+
+[View9]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas
+CursorX=28
+CursorY=52
+TopLine=29
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\SOURCE\WIN32\RTL\SYS\SysUtils.pas
+
+[View10]
+CustomEditViewType=TEditView
+Module=c:\program files (x86)\codegear\rad studio\5.0\source\Indy\Indy10\Core\IdLogBase.pas
+CursorX=15
+CursorY=39
+TopLine=39
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=c:\program files (x86)\codegear\rad studio\5.0\source\Indy\Indy10\Core\IdLogBase.pas
+
+[View11]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\gtSQL.pas
-CursorX=66
-CursorY=122
-TopLine=105
+CursorX=3
+CursorY=157
+TopLine=152
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=C:\#My Work\GarTime\gtSQL.pas
 
-[View5]
+[View12]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\GarTime3.dpr
 CursorX=10
@@ -147,11 +270,11 @@ Elisions=
 Bookmarks=
 EditViewName=C:\#My Work\GarTime\GarTime3.dpr
 
-[View6]
+[View13]
 CustomEditViewType=TEditView
 Module=C:\#My Work\GarTime\gtIntfs.pas
 CursorX=1
-CursorY=11
+CursorY=16
 TopLine=1
 LeftCol=1
 Elisions=
@@ -172,11 +295,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=203
 LRDockWidth=13602
 Dockable=1
@@ -194,17 +317,17 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=10797
-Top=366
+Left=141
+Top=264
 Width=8930
 Height=8526
 MaxLeft=-8
 MaxTop=-10
-MaxWidth=15125
-MaxHeight=10732
-ClientWidth=15000
-ClientHeight=10335
-BottomPanelSize=9404
+MaxWidth=10125
+MaxHeight=10163
+ClientWidth=10000
+ClientHeight=9766
+BottomPanelSize=8857
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -236,12 +359,12 @@ State=0
 Left=0
 Top=502
 Width=2000
-Height=2764
+Height=2195
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=2764
-TBDockHeight=7530
+ClientHeight=2195
+TBDockHeight=7154
 LRDockWidth=2000
 Dockable=1
 StayOnTop=0
@@ -277,11 +400,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=407
 LRDockWidth=4953
 Dockable=1
@@ -296,11 +419,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=203
 LRDockWidth=7406
 Dockable=1
@@ -319,11 +442,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=1545
 LRDockWidth=3484
 Dockable=1
@@ -338,11 +461,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=2063
 LRDockWidth=3484
 Dockable=1
@@ -376,11 +499,11 @@ State=0
 Left=0
 Top=0
 Width=2336
-Height=986
+Height=1220
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2336
-ClientHeight=986
+ClientHeight=1220
 TBDockHeight=2317
 LRDockWidth=2828
 Dockable=1
@@ -441,11 +564,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=7276
+Height=8709
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=7276
+ClientHeight=8709
 TBDockHeight=4878
 LRDockWidth=7148
 Dockable=1
@@ -460,21 +583,16 @@ State=0
 Left=0
 Top=399
 Width=1891
-Height=3811
+Height=3242
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1891
-ClientHeight=3811
+ClientHeight=3242
 TBDockHeight=407
 LRDockWidth=1891
 Dockable=1
 StayOnTop=0
 SplitPos=111
-
-[PropInspDesignerSelection]
-ArrangeBy=Category
-SelectedItem=Miscellaneous.Name,
-ExpandedItems=Action=1,"Drag Drop/Docking=1","Help and Hints=1",Input=1,Layout=1,Legacy=1,Linkage=1,Locale=1,Localizable=1,Miscellaneous=1,Visual=1
 
 [ModelViewTool]
 PercentageSizes=1
@@ -485,11 +603,11 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=7276
+Height=8709
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=7276
+ClientHeight=8709
 TBDockHeight=4878
 LRDockWidth=5305
 Dockable=1
@@ -501,8 +619,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=487
-Top=-565
+Left=-245
+Top=-984
 Width=3562
 Height=4827
 MaxLeft=-1
@@ -520,8 +638,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=75
-Top=-341
+Left=-245
+Top=-984
 Width=13602
 Height=203
 MaxLeft=-1
@@ -539,8 +657,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=353
-Top=-423
+Left=-245
+Top=-984
 Width=3562
 Height=4827
 MaxLeft=-1
@@ -558,8 +676,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=353
-Top=-432
+Left=-245
+Top=-984
 Width=3562
 Height=2297
 MaxLeft=-1
@@ -580,11 +698,11 @@ State=0
 Left=0
 Top=0
 Width=3828
-Height=1402
+Height=1230
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1402
+ClientHeight=1230
 TBDockHeight=1555
 LRDockWidth=8742
 Dockable=1
@@ -623,11 +741,11 @@ Docked=1
 State=0
 Left=0
 Top=23
-Width=15000
+Width=10000
 Height=1657
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=15000
+ClientWidth=10000
 ClientHeight=1657
 TBDockHeight=1657
 LRDockWidth=4328
@@ -640,8 +758,8 @@ Create=1
 Visible=0
 Docked=0
 State=0
-Left=16586
-Top=2236
+Left=0
+Top=0
 Width=1828
 Height=6179
 MaxLeft=-8
@@ -688,15 +806,15 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=960
-Top=23
+Left=0
+Top=0
 Width=3828
-Height=1657
+Height=1484
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3828
-ClientHeight=1657
-TBDockHeight=1657
+ClientHeight=1484
+TBDockHeight=1484
 LRDockWidth=3828
 Dockable=1
 StayOnTop=0

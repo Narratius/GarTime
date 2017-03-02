@@ -21,10 +21,10 @@
     <DCC_DcuOutput>$(binout)\units</DCC_DcuOutput>
     <DCC_ObjOutput>$(binout)\units</DCC_ObjOutput>
     <DCC_HppOutput>$(binout)\units</DCC_HppOutput>
-    <DCC_UnitSearchPath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3</DCC_UnitSearchPath>
-    <DCC_ResourcePath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3</DCC_ResourcePath>
-    <DCC_ObjPath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3</DCC_ObjPath>
-    <DCC_IncludePath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3</DCC_IncludePath>
+    <DCC_UnitSearchPath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3;$(lib)\jwa\win32api</DCC_UnitSearchPath>
+    <DCC_ResourcePath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3;$(lib)\jwa\win32api</DCC_ResourcePath>
+    <DCC_ObjPath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3;$(lib)\jwa\win32api</DCC_ObjPath>
+    <DCC_IncludePath>$(lib)\CoolTrayIcon\Source;$(lib)\sqlite3;$(lib)\jwa\win32api</DCC_IncludePath>
   </PropertyGroup>
   <ProjectExtensions>
     <Borland.Personality>Delphi.Personality</Borland.Personality>
@@ -41,6 +41,7 @@
       <Form>MainForm</Form>
     </DCCReference>
     <DCCReference Include="gtIntfs.pas" />
+    <DCCReference Include="gtLogFile.pas" />
     <DCCReference Include="gtSQL.pas" />
     <DCCReference Include="gtUtils.pas" />
   </ItemGroup>

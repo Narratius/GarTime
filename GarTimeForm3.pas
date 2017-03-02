@@ -75,9 +75,12 @@ implementation
 {$R *.dfm}
 
 Uses
- DateUtils, Math, StrUtils, IdHTTP, gtSQL//gtTypes
+ DateUtils, Math, StrUtils,
+ IdHTTP,
+ jwaWTSApi32,
+ gtSQL, gtUtils//gtTypes
  {$IFDEF GarTime}
- , jwaWTSApi32, ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
+ , ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
   ;
 
@@ -110,12 +113,22 @@ begin
                           Format('Сегодня: %s'#10'%s'#10'Домой в: %s',
                           [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
-
+{$IFDEF Debug}
+const
+  WTS_NAMES : array[1..8] of String =
+  ('WTS_CONSOLE_CONNECT', 'WTS_CONSOLE_DISCONNECT',
+  'WTS_REMOTE_CONNECT','WTS_REMOTE_DISCONNECT',
+  'WTS_SESSION_LOGON','WTS_SESSION_LOGOFF',
+  'WTS_SESSION_LOCK','WTS_SESSION_UNLOCK');
+{$ENDIF}
 procedure TMainForm.AppEventsMessage(var Msg: tagMSG;
   var Handled: Boolean);
 begin
  if Msg.message = WM_WTSSESSION_Change then
  begin
+  {$IFDEF Debug}
+  gLog.Msg('WTS_XXXXX=%s', [WTS_NAMES[Msg.wParam]]);
+  {$ENDIF}
   case Msg.wParam of
 (*   WTS_CONSOLE_CONNECT: s:= 'A session was connected to the console terminal.';
    WTS_CONSOLE_DISCONNECT: S:= 'A session was disconnected from the console terminal.';
@@ -196,9 +209,7 @@ begin
  f_CanClose:= True;
  f_AutoRunner:= TAutoRunner.Create(Self);
  f_AutoRunner.AutoRun:= True;
- {$IFDEF GarTime}
  WTSRegisterSessionNotification(Handle, 0);
- {$ENDIF}
  CreateConfig;
  try
   f_Timer := TgtSQLTimer.Create();
@@ -218,9 +229,7 @@ begin
  DestroyConfig;
  f_Timer:= nil;
  FreeAndNil(f_AutoRunner);
- {$IFDEF GarTime}
  WTSUnRegisterSessionNotification(Handle);
- {$ENDIF}
 end;
 
 function TMainForm.GetHint: string;
@@ -288,6 +297,9 @@ end;
 
 procedure TMainForm.Start;
 begin
+ {$IFDEF Debug}
+ gLog.Msg('Start');
+ {$ENDIF}
  {$IFDEF GarTime}
  if not l3IsRemoteSession then
  begin
@@ -314,6 +326,9 @@ end;
 
 procedure TMainForm.Stop;
 begin
+ {$IFDEF Debug}
+ gLog.Msg('Stop');
+ {$ENDIF}
  if Started then
  begin
   f_Timer.Stop;

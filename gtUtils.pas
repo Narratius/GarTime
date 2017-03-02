@@ -2,9 +2,15 @@ unit gtUtils;
 
 interface
 
+Uses
+ gtLogFile;
+
 function MinutesToString(aMinutes: Int64): ShortString;
 
 function DataFileName: string;
+
+var
+ gLog: TgtLogFile;
 
 implementation
 
@@ -36,5 +42,8 @@ begin
 end;
 
 
-
+initialization
+ gLog:= TgtLogFile.Create;
+finalization
+ FreeAndNil(gLog);
 end.

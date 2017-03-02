@@ -1,6 +1,9 @@
-# GarTime
+# GarTime3
 Программа учета рабочего времени
 
 Сидит в трее. После логина запускает учет времени. Блокировка компьютера приостанавливает учет. Выключение компьютера останавливает учет.
 
-Для сборки необходим компонент TCoolTrayIcon - https://github.com/coolshou/CoolTrayIcon
+Для сборки необходимы:
+* компонент TCoolTrayIcon - https://github.com/coolshou/CoolTrayIcon
+* библиотека JEDI Windows API
+* библиотека SQlite3

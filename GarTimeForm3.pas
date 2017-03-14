@@ -2,10 +2,14 @@ unit GarTimeForm3;
 
 interface
 {.$DEFINE GarTime} // Для синхронизации с Confluence нужно включить
+{$DEFINE Issues}
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Menus, ActnList, ImgList, AppEvnts,
   CoolTrayIcon, AutoRunner, gtIntfs
+  {$IFDEF Issues}
+  , gtIssues
+  {$ENDIF}
   {$IFDEF GarTime}
   , ddAppConfigTypes
   {$ENDIF};
@@ -13,7 +17,7 @@ uses
 type
   TMainForm = class(TForm)
     actExit: TAction;
-    ActionList1: TActionList;
+    GTActions: TActionList;
     actShowStatistic: TAction;
     actStart: TAction;
     actStop: TAction;
@@ -26,6 +30,12 @@ type
     TrayMenu: TPopupMenu;
     actConfig: TAction;
     N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    actStartIssue: TAction;
+    actFinishIssue: TAction;
+    N4: TMenuItem;
+    N5: TMenuItem;
     procedure actConfigExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
     procedure actShowExecute(Sender: TObject);
@@ -39,11 +49,16 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure timeUpdateTimer(Sender: TObject);
     procedure TrayIconStartup(Sender: TObject; var ShowMainForm: Boolean);
+    procedure actStartIssueExecute(Sender: TObject);
+    procedure actFinishIssueExecute(Sender: TObject);
   private
     f_AutoRunner: TAutoRunner;
     f_CanClose: Boolean;
     {$IFDEF GarTime}
     f_Config: TddAppConfigNode;
+    {$ENDIF}
+    {$IFDEF Issues}
+    f_Issues: TgtIssues;
     {$ENDIF}
     f_HomeStr: string;
     f_MonthTimeStr: string;
@@ -78,7 +93,8 @@ Uses
  DateUtils, Math, StrUtils,
  IdHTTP,
  jwaWTSApi32,
- gtSQL, gtUtils//gtTypes
+ gtSQL, gtUtils
+ ,gtIssueCloseDlg
  {$IFDEF GarTime}
  , ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
@@ -102,6 +118,18 @@ begin
  Close;
 end;
 
+procedure TMainForm.actFinishIssueExecute(Sender: TObject);
+var
+ l_Comment: String;
+ l_Close: Boolean;
+begin
+  if IssueCloseDlg(l_Comment, l_Close) then
+  begin
+    f_Timer.Stop;
+    f_Issues.Finish(l_Comment);
+  end;
+end;
+
 procedure TMainForm.actShowExecute(Sender: TObject);
 begin
  ShowMainForm;
@@ -113,6 +141,23 @@ begin
                           Format('Сегодня: %s'#10'%s'#10'Домой в: %s',
                           [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
+
+procedure TMainForm.actStartIssueExecute(Sender: TObject);
+var
+ l_Issue, l_ActiveIssue: String;
+begin
+ l_Issue:= InputBox('Выбор задачи', 'Укажите номер задачи для выполнения', '');
+ if l_Issue <> '' then
+ begin
+  Stop;
+  l_ActiveIssue:= f_Issues.GetActiveIssue;
+  if (l_ActiveIssue <> '') and (l_Issue <> l_ActiveIssue) then
+    f_Issues.Finish('Переключение на другую задачу');
+  Start;
+  f_Issues.Start(l_Issue);
+ end;
+end;
+
 {$IFDEF Debug}
 const
   WTS_NAMES : array[1..8] of String =
@@ -134,10 +179,10 @@ begin
    WTS_CONSOLE_DISCONNECT: S:= 'A session was disconnected from the console terminal.';
 *) WTS_REMOTE_CONNECT: Stop;
    WTS_REMOTE_DISCONNECT: Stop;
-   WTS_SESSION_LOGON: Start;
+   WTS_SESSION_LOGON: begin Start; f_Issues.ResumeIssue; end;
    WTS_SESSION_LOGOFF: Stop;
    WTS_SESSION_LOCK: Stop;
-   WTS_SESSION_UNLOCK: Start;
+   WTS_SESSION_UNLOCK: begin Start; f_Issues.ResumeIssue; end;
   end;
  end
  else
@@ -153,6 +198,7 @@ end;
 procedure TMainForm.btStartClick(Sender: TObject);
 begin
  Start;
+ f_Issues.ResumeIssue;
 end;
 
 procedure TMainForm.btStopClick(Sender: TObject);
@@ -205,6 +251,8 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+ l_ISQLTimer: IgtSQLTimer;
 begin
  f_CanClose:= True;
  f_AutoRunner:= TAutoRunner.Create(Self);
@@ -215,8 +263,15 @@ begin
   f_Timer := TgtSQLTimer.Create();
   timeUpdate.Interval:= 1000*60; // 1 минута
   f_ShowBalloon:= False;
+  {$IFDEF Issues}
+  if f_Timer.QueryInterface(IgtSQLTimer, l_ISQLTimer) = 0 then
+    f_Issues:= TgtIssues.Create(l_ISQLTimer.DB);
+  {$ENDIF}
   LoadDayInfo;
   Start;
+  {$IFDEF Issues}
+  f_Issues.ResumeIssue;
+  {$ENDIF}
   f_CanClose:= False;
  except
   Application.Terminate;
@@ -226,6 +281,9 @@ end;
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
  //SaveDayInfo;
+ {$IFDEF Issues}
+ FreeAndNil(f_Issues);
+ {$ENDIF}
  DestroyConfig;
  f_Timer:= nil;
  FreeAndNil(f_AutoRunner);

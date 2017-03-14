@@ -41,6 +41,10 @@
       <Form>MainForm</Form>
     </DCCReference>
     <DCCReference Include="gtIntfs.pas" />
+    <DCCReference Include="gtIssueCloseDlg.pas">
+      <Form>IssueCloseDialog</Form>
+    </DCCReference>
+    <DCCReference Include="gtIssues.pas" />
     <DCCReference Include="gtLogFile.pas" />
     <DCCReference Include="gtSQL.pas" />
     <DCCReference Include="gtUtils.pas" />

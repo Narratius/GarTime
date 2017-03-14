@@ -8,7 +8,14 @@ Uses
 
 
 type
- TgtSQLTimer = class(TInterfacedObject, IgtTimer)
+ IgtSQLTimer = interface
+   ['{A3A957BA-DF92-4548-B8DC-AA213AD3EF85}']
+   function GetSQLiteDatabase: TSQLiteDatabase;
+   property DB: TSQLiteDatabase read GetSQLiteDatabase;
+ end;
+
+
+ TgtSQLTimer = class(TInterfacedObject, IgtTimer, IgtSQLTimer)
  private
   f_DB: TSQLiteDatabase;
   f_Started: Boolean;
@@ -16,6 +23,7 @@ type
   procedure MigrateFromXML;
   procedure StartPeriod(aDate: TDateTime);
   procedure StopPeriod(aDate: TDateTime);
+  function GetSQLiteDatabase: TSQLiteDatabase;
  public
   constructor Create;
   destructor Destroy; override;
@@ -103,6 +111,11 @@ end;
 function TgtSQLTimer.GetIsStarted: Boolean;
 begin
   Result:= f_Started;
+end;
+
+function TgtSQLTimer.GetSQLiteDatabase: TSQLiteDatabase;
+begin
+  Result:= f_DB;
 end;
 
 function TgtSQLTimer.MonthSheet(out theSheet, theGarSheet: Integer;

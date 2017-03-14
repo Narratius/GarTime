@@ -31,6 +31,18 @@ object MainForm: TMainForm
       Action = actStart
       Default = True
     end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object N4: TMenuItem
+      Action = actStartIssue
+    end
+    object N5: TMenuItem
+      Action = actFinishIssue
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
     object N1: TMenuItem
       Action = actConfig
     end
@@ -38,14 +50,16 @@ object MainForm: TMainForm
       Action = actExit
     end
   end
-  object ActionList1: TActionList
+  object GTActions: TActionList
     Left = 72
     Top = 8
     object actStart: TAction
+      Category = 'Time'
       Caption = #1057#1090#1072#1088#1090
       OnExecute = btStartClick
     end
     object actStop: TAction
+      Category = 'Time'
       Caption = #1057#1090#1086#1087
       OnExecute = btStopClick
     end
@@ -54,6 +68,7 @@ object MainForm: TMainForm
       OnExecute = actExitExecute
     end
     object actShowStatistic: TAction
+      Category = 'Time'
       Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1089#1090#1072#1090#1080#1089#1090#1080#1082#1091
       OnExecute = actShowStatisticExecute
     end
@@ -61,12 +76,22 @@ object MainForm: TMainForm
       Caption = #1050#1086#1085#1092#1080#1075#1091#1088#1072#1094#1080#1103'...'
       OnExecute = actConfigExecute
     end
+    object actStartIssue: TAction
+      Category = 'Issues'
+      Caption = #1053#1072#1095#1072#1090#1100' '#1079#1072#1076#1072#1095#1091'...'
+      OnExecute = actStartIssueExecute
+    end
+    object actFinishIssue: TAction
+      Category = 'Issues'
+      Caption = #1054#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1079#1072#1076#1072#1095#1091'...'
+      OnExecute = actFinishIssueExecute
+    end
   end
   object IconImages: TImageList
     Left = 216
     Top = 32
     Bitmap = {
-      494C010104000900300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

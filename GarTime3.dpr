@@ -8,7 +8,8 @@ uses
   gtUtils in 'gtUtils.pas',
   gtLogFile in 'gtLogFile.pas',
   gtIssues in 'gtIssues.pas',
-  gtIssueCloseDlg in 'gtIssueCloseDlg.pas' {IssueCloseDialog};
+  gtIssueCloseDlg in 'gtIssueCloseDlg.pas' {IssueCloseDialog},
+  gtReportForm in 'gtReportForm.pas' {DailyReportForm};
 
 {$R *.res}
 
@@ -17,5 +18,6 @@ begin
   Application.Title := 'Gartime3';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TIssueCloseDialog, IssueCloseDialog);
+  Application.CreateForm(TDailyReportForm, DailyReportForm);
   Application.Run;
 end.

@@ -40,6 +40,9 @@ object MainForm: TMainForm
     object N5: TMenuItem
       Action = actFinishIssue
     end
+    object N6: TMenuItem
+      Action = actDailyReport
+    end
     object N3: TMenuItem
       Caption = '-'
     end
@@ -86,12 +89,17 @@ object MainForm: TMainForm
       Caption = #1054#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1079#1072#1076#1072#1095#1091'...'
       OnExecute = actFinishIssueExecute
     end
+    object actDailyReport: TAction
+      Category = 'Issues'
+      Caption = #1054#1090#1095#1077#1090' '#1079#1072' '#1089#1077#1075#1086#1076#1085#1103
+      OnExecute = actDailyReportExecute
+    end
   end
   object IconImages: TImageList
     Left = 216
     Top = 32
     Bitmap = {
-      494C010104000900400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

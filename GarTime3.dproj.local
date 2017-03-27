@@ -9,5 +9,7 @@
     <Transaction>2017.03.03 11:12:09.604.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtIssues.pas</Transaction>
     <Transaction>2017.03.14 13:09:31.341.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtIssueCloseDlg.pas</Transaction>
     <Transaction>2017.03.14 13:09:31.341.dfm,C:\#My Work\GarTime\Unit1.dfm=C:\#My Work\GarTime\gtIssueCloseDlg.dfm</Transaction>
+    <Transaction>2017.03.24 11:24:41.844.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtReportForm.pas</Transaction>
+    <Transaction>2017.03.24 11:24:41.844.dfm,C:\#My Work\GarTime\Unit1.dfm=C:\#My Work\GarTime\gtReportForm.dfm</Transaction>
   </Transactions>
 </BorlandProject>

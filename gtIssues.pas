@@ -68,15 +68,38 @@ begin
 end;
 
 procedure TgtIssues.FillDayReport(aReport: TStrings);
-begin
+var
+ l_Table: TSQLiteTable;
+ l_SQL: String;
 
+begin
+  // Построение списка задач за сегодня
+  l_SQL:= 'select t.issueid as "Задача", CAST(Sum(t.worktime) as float) / 60  as "часы" from ' +
+  '(Select it.Issueid, SUM(strftime("%s",ifnull(FinishTime, time("now", "localtime")))-strftime("%s",[StartTime])) / 60 as "WorkTime" ' +
+  'from issuestime as it ' +
+  'join timesheet as ts on ts.id = it.timeid ' +
+  'where StartDate = date("now") ' +
+  'group by it.issueid, it.timeid ' +
+  'order by it.issueid) t ' +
+  'group by t.issueid';
+  aReport.Clear;
+  with f_DB do
+  begin
+    l_Table:= GetTable(l_SQL);
+    try
+      while not l_Table.EOF do
+      begin
+       aReport.Add(Format('http://ws2.medwork.ru:33380/redmine/issues/%s %4.2f ч', [l_Table.FieldAsString(0), l_Table.FieldAsDouble(1)]));
+       l_Table.Next;
+      end; // while
+    finally
+      FreeAndNil(l_Table);
+    end;
+  end;
 end;
 
 procedure TgtIssues.Finish(const Comment: String);
 begin
-  {
-  1. Ищем активную задачу и закрываем ее
-  }
   Finish(GetActiveIssue, Comment);
 end;
 

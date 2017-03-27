@@ -36,6 +36,8 @@ type
     actFinishIssue: TAction;
     N4: TMenuItem;
     N5: TMenuItem;
+    actDailyReport: TAction;
+    N6: TMenuItem;
     procedure actConfigExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
     procedure actShowExecute(Sender: TObject);
@@ -51,6 +53,7 @@ type
     procedure TrayIconStartup(Sender: TObject; var ShowMainForm: Boolean);
     procedure actStartIssueExecute(Sender: TObject);
     procedure actFinishIssueExecute(Sender: TObject);
+    procedure actDailyReportExecute(Sender: TObject);
   private
     f_AutoRunner: TAutoRunner;
     f_CanClose: Boolean;
@@ -94,7 +97,7 @@ Uses
  IdHTTP,
  jwaWTSApi32,
  gtSQL, gtUtils
- ,gtIssueCloseDlg
+ ,gtIssueCloseDlg, gtReportForm
  {$IFDEF GarTime}
  , ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
@@ -112,6 +115,18 @@ begin
  {$ENDIF}
 end;
 
+procedure TMainForm.actDailyReportExecute(Sender: TObject);
+begin
+  // Строим и показываем отчет за день
+  with TDailyReportForm.Create(nil) do
+  try
+   f_Issues.FillDayReport(ReportMemo.Lines);
+   ShowModal;
+  finally
+    Free;
+  end;
+end;
+
 procedure TMainForm.actExitExecute(Sender: TObject);
 begin
  f_CanClose:= True;
@@ -127,6 +142,7 @@ begin
   begin
     f_Timer.Stop;
     f_Issues.Finish(l_Comment);
+    f_Timer.Start;
   end;
 end;
 

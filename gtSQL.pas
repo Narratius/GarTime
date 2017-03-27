@@ -180,6 +180,8 @@ procedure TgtSQLTimer.StartPeriod(aDate: TDateTime);
 begin
   with f_DB do
   begin
+    // Контроль закрытия
+    StopPeriod(IncSecond(aDate, -1));
     BeginTransaction;
     try
       ParamsClear;
@@ -202,7 +204,7 @@ begin
       ParamsClear;
       AddParamText(':FinishDate', lp_MakeDate(aDate));
       AddParamText(':FinishTime', lp_MakeTime(aDate));
-      ExecSQL('UPDATE TimeSheet SET FinishDate = :FinishDate, FinishTime = :FinishTime WHERE id = (SELECT ID FROM TimeSheet ORDER BY id DESC LIMIT 1)');
+      ExecSQL('UPDATE TimeSheet SET FinishDate = :FinishDate, FinishTime = :FinishTime WHERE id = (SELECT ID FROM TimeSheet WHERE FinishDate is NULL ORDER BY id DESC LIMIT 1)');
       Commit;
     except
       Rollback;

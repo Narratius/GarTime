@@ -15,31 +15,30 @@ object DailyReportForm: TDailyReportForm
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object ReportMemo: TMemo
-    Left = 8
-    Top = 8
-    Width = 401
-    Height = 113
-    Lines.Strings = (
-      '')
-    TabOrder = 0
-  end
   object ClipButton: TButton
     Left = 248
-    Top = 136
-    Width = 75
+    Top = 147
+    Width = 91
     Height = 25
     Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100
-    TabOrder = 1
+    TabOrder = 0
     OnClick = ClipButtonClick
   end
   object Button2: TButton
-    Left = 335
-    Top = 136
+    Left = 345
+    Top = 147
     Width = 75
     Height = 25
     Caption = #1054#1050
     ModalResult = 1
+    TabOrder = 1
+  end
+  object ReportList: TListBox
+    Left = 8
+    Top = 8
+    Width = 412
+    Height = 133
+    ItemHeight = 13
     TabOrder = 2
   end
 end

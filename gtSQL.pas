@@ -32,6 +32,8 @@ type
   procedure Pause;
   procedure Start;
   procedure Stop;
+ public
+  property DB: TSQLiteDataBase read f_DB;
   property IsStarted: Boolean read GetIsStarted;
  end;
 

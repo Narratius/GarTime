@@ -44,6 +44,9 @@
     <DCCReference Include="gtIssueCloseDlg.pas">
       <Form>IssueCloseDialog</Form>
     </DCCReference>
+    <DCCReference Include="gtIssueOpenDlg.pas">
+      <Form>IssueOpenDialog</Form>
+    </DCCReference>
     <DCCReference Include="gtIssues.pas" />
     <DCCReference Include="gtLogFile.pas" />
     <DCCReference Include="gtReportForm.pas">

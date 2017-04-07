@@ -8,9 +8,9 @@ uses
 
 type
   TDailyReportForm = class(TForm)
-    ReportMemo: TMemo;
     ClipButton: TButton;
     Button2: TButton;
+    ReportList: TListBox;
     procedure ClipButtonClick(Sender: TObject);
   private
     { Private declarations }
@@ -31,9 +31,19 @@ Uses
 {$R *.dfm}
 
 procedure TDailyReportForm.ClipButtonClick(Sender: TObject);
+var
+ l_Text: TStrings;
+ i: Integer;
 begin
   // Забрать содержимое Мемо в буфер
-  Clipboard.SetTextBuf(PAnsiChar(ReportMemo.Lines.Text));
+  l_Text:= TStringList.Create;
+  try
+    for I := 0 to ReportList.Items.Count - 1 do
+      l_Text.Add('http://ws2.medwork.ru:33380/redmine/issues/'+ ReportList.Items[i]);
+    Clipboard.SetTextBuf(PAnsiChar(l_Text.Text));
+  finally
+    FreeAndNil(l_text);
+  end;
 end;
 
 procedure TDailyReportForm.Execute;

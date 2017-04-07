@@ -9,7 +9,8 @@ uses
   gtLogFile in 'gtLogFile.pas',
   gtIssues in 'gtIssues.pas',
   gtIssueCloseDlg in 'gtIssueCloseDlg.pas' {IssueCloseDialog},
-  gtReportForm in 'gtReportForm.pas' {DailyReportForm};
+  gtReportForm in 'gtReportForm.pas' {DailyReportForm},
+  gtIssueOpenDlg in 'gtIssueOpenDlg.pas' {IssueOpenDialog};
 
 {$R *.res}
 
@@ -17,7 +18,5 @@ begin
   Application.Initialize;
   Application.Title := 'Gartime3';
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TIssueCloseDialog, IssueCloseDialog);
-  Application.CreateForm(TDailyReportForm, DailyReportForm);
   Application.Run;
 end.

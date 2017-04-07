@@ -97,7 +97,7 @@ Uses
  IdHTTP,
  jwaWTSApi32,
  gtSQL, gtUtils
- ,gtIssueCloseDlg, gtReportForm
+ ,gtIssueCloseDlg, gtReportForm, gtIssueOpenDlg
  {$IFDEF GarTime}
  , ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
  {$ENDIF}
@@ -120,7 +120,7 @@ begin
   // Строим и показываем отчет за день
   with TDailyReportForm.Create(nil) do
   try
-   f_Issues.FillDayReport(ReportMemo.Lines);
+   f_Issues.FillDayReport(ReportList.Items);
    ShowModal;
   finally
     Free;
@@ -154,23 +154,28 @@ end;
 procedure TMainForm.actShowStatisticExecute(Sender: TObject);
 begin
  TrayIcon.ShowBalloonHint('Учет рабочего времени',
-                          Format('Сегодня: %s'#10'%s'#10'Домой в: %s',
-                          [f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
+                          Format('Задача: %s'#10'Сегодня: %s'#10'%s'#10'Домой в: %s',
+                          [f_Issues.GetActiveIssue, f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
 
 procedure TMainForm.actStartIssueExecute(Sender: TObject);
 var
- l_Issue, l_ActiveIssue: String;
+ l_Issue, l_ActiveIssue, l_Title: String;
 begin
- l_Issue:= InputBox('Выбор задачи', 'Укажите номер задачи для выполнения', '');
- if l_Issue <> '' then
- begin
-  Stop;
-  l_ActiveIssue:= f_Issues.GetActiveIssue;
-  if (l_ActiveIssue <> '') and (l_Issue <> l_ActiveIssue) then
-    f_Issues.Finish('Переключение на другую задачу');
-  Start;
-  f_Issues.Start(l_Issue);
+ //
+ with TIssueOpenDialog.Create(nil) do
+ try
+   if Execute(f_Issues, l_Issue, l_Title) then
+   begin
+    Stop;
+    l_ActiveIssue:= f_Issues.GetActiveIssue;
+    if (l_ActiveIssue <> '') and (l_Issue <> l_ActiveIssue) then
+      f_Issues.Finish('Переключение на другую задачу');
+    Start;
+    f_Issues.Start(l_Issue, l_Title);
+   end;
+ finally
+   Free;
  end;
 end;
 

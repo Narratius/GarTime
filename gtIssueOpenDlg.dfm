@@ -57,7 +57,7 @@ object IssueOpenDialog: TIssueOpenDialog
     Top = 32
     Width = 265
     Height = 21
-    ItemHeight = 13
+    ItemHeight = 0
     TabOrder = 2
     OnChange = IssuesComboChange
   end

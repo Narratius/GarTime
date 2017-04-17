@@ -47,13 +47,14 @@ begin
   f_Issues:= aIssues;
   aIssues.GetIssues(IssuesCombo.Items);
   IssuesCombo.ItemIndex:= IssuesCombo.Items.IndexOf(aIssues.GetActiveIssue);
+  IssuesComboChange(Self);
   Result:= IsPositiveResult(ShowModal);
   if Result then
   begin
     aIssueNum:= IssuesCombo.Text;
     aIssueTitle:= TitleEdit.Text;
-  end;
- end;
+  end; // Result
+ end; // aIssues <> nil
 end;
 
 end.

@@ -26,6 +26,7 @@ type
    procedure ResumeIssue;
    procedure GetIssues(Issues: TStrings);
    function GetIssueTitle(const IssueNumber: String): String;
+   function MakeDayReport: TSQLiteTable;
  end;
 
 implementation
@@ -72,32 +73,17 @@ end;
 procedure TgtIssues.FillDayReport(aReport: TStrings);
 var
  l_Table: TSQLiteTable;
- l_SQL: String;
-
 begin
-  // Построение списка задач за сегодня
-  l_SQL:= 'select t.issueid as "Задача", i.Title as "Название", CAST(Sum(t.worktime) as float) / 60  as "часы" from ' +
-  '(Select it.Issueid, SUM(strftime("%s",ifnull(FinishTime, time("now", "localtime")))-strftime("%s",[StartTime])) / 60 as "WorkTime" ' +
-  'from issuestime as it ' +
-  'join timesheet as ts on ts.id = it.timeid ' +
-  'where StartDate = date("now") ' +
-  'group by it.issueid, it.timeid ' +
-  'order by it.issueid) t ' +
-  'join issues as i on i.Issue = t.IssueID ' +
-  'group by t.issueid';
   aReport.Clear;
-  with f_DB do
-  begin
-    l_Table:= GetTable(l_SQL);
-    try
-      while not l_Table.EOF do
-      begin
-       aReport.Add(Format('%s (%s) %4.1f ч', [l_Table.FieldAsString(0), UTF8ToAnsi(l_Table.FieldAsString(1)), l_Table.FieldAsDouble(2)]));
-       l_Table.Next;
-      end; // while
-    finally
-      FreeAndNil(l_Table);
-    end;
+  l_Table:= MakeDayReport;
+  try
+    while not l_Table.EOF do
+    begin
+     aReport.Add(Format('%s (%s) %4.1f ч', [l_Table.FieldAsString(0), UTF8ToAnsi(l_Table.FieldAsString(1)), l_Table.FieldAsDouble(2)]));
+     l_Table.Next;
+    end; // while
+  finally
+    FreeAndNil(l_Table);
   end;
 end;
 
@@ -141,9 +127,28 @@ var
  l_Table: TSQLiteTable;
 begin
   Result:= '';
-  l_Table:= f_DB.GetTable('SELECT Title FROM Issues WHERE Issue = '+IssueNumber);
+  f_DB.ParamsClear;
+  f_DB.AddParamText(':Issue', IssueNumber);
+  l_Table:= f_DB.GetTable('SELECT Title FROM Issues WHERE Issue = :Issue');
   if l_Table.Count > 0 then
     Result:= UTF8ToAnsi(l_Table.FieldAsString(0));
+end;
+
+function TgtIssues.MakeDayReport: TSQLiteTable;
+var
+ l_SQL: String;
+begin
+  // Построение списка задач за сегодня
+  l_SQL:= 'select t.issueid as "Задача", i.Title as "Название", CAST(Sum(t.worktime) as float) / 60  as "часы" from ' +
+  '(Select it.Issueid, SUM(strftime("%s",ifnull(FinishTime, time("now", "localtime")))-strftime("%s",[StartTime])) / 60 as "WorkTime" ' +
+  'from issuestime as it ' +
+  'join timesheet as ts on ts.id = it.timeid ' +
+  'where StartDate = date("now") ' +
+  'group by it.issueid, it.timeid ' +
+  'order by it.issueid) t ' +
+  'join issues as i on i.Issue = t.IssueID ' +
+  'group by t.issueid';
+  Result:= f_DB.GetTable(l_SQL);
 end;
 
 procedure TgtIssues.Finish(const IssueNumber, Comment: String);
@@ -155,39 +160,42 @@ begin
   1. Ищем активную задачу с IssueID
   2. Добавляем ей комментарий и сбрасываем Active
   }
-  with f_DB do
+  if IssueNumber <> '' then
   begin
-    ParamsClear;
-    AddParamText(':Issue', IssueNumber);
-    l_Table:= GetTable('SELECT ID FROM Issues WHERE Issue = :Issue and Active = 1');
-    if l_Table.Count > 0 then
+    with f_DB do
     begin
-      BeginTransaction;
-      try
-        ParamsClear;
-        AddParamText(':ID', l_Table.FieldByName['ID']);
-        ExecSQL('UPDATE Issues SET Active = 0 WHERE ID = :ID');
-        // Комментарий в таблице IssuesTime. Нужно найти последний интервал у задачи
-        ParamsClear;
-        AddParamText(':Issue', IssueNumber);
-        l_Table2:= GetTable('SELECT ID FROM IssuesTime WHERE IssueID = :Issue ORDER BY ID DESC LIMIT 1');
+      ParamsClear;
+      AddParamText(':Issue', IssueNumber);
+      l_Table:= GetTable('SELECT ID FROM Issues WHERE Issue = :Issue and Active = 1');
+      if l_Table.Count > 0 then
+      begin
+        BeginTransaction;
         try
-          l_ID:= l_Table2.FieldAsInteger(l_Table2.FieldIndex['ID']);
-        finally
-          FreeAndNil(l_Table2);
+          ParamsClear;
+          AddParamText(':ID', l_Table.FieldByName['ID']);
+          ExecSQL('UPDATE Issues SET Active = 0 WHERE ID = :ID');
+          // Комментарий в таблице IssuesTime. Нужно найти последний интервал у задачи
+          ParamsClear;
+          AddParamText(':Issue', IssueNumber);
+          l_Table2:= GetTable('SELECT ID FROM IssuesTime WHERE IssueID = :Issue ORDER BY ID DESC LIMIT 1');
+          try
+            l_ID:= l_Table2.FieldAsInteger(l_Table2.FieldIndex['ID']);
+          finally
+            FreeAndNil(l_Table2);
+          end;
+          ParamsClear;
+          AddParamText(':Comment', AnsiToUTF8(Comment));
+          AddParamInt(':ID', l_ID);
+          ExecSQL('UPDATE IssuesTime SET Comment = :Comment WHERE ID = :ID');
+          Commit;
+        except
+          Rollback;
         end;
-        ParamsClear;
-        AddParamText(':Comment', AnsiToUTF8(Comment));
-        AddParamInt(':ID', l_ID);
-        ExecSQL('UPDATE IssuesTime SET Comment = :Comment WHERE ID = :ID');
-        Commit;
-      except
-        Rollback;
-      end;
-    end
-    else
-      raise Exception.CreateFmt('Задача %s неактивна', [IssueNumber]);
-  end; // with f_DB
+      end
+      else
+        raise Exception.CreateFmt('Задача %s неактивна', [IssueNumber]);
+    end; // with f_DB
+  end;
 end;
 
 procedure TgtIssues.Pause(const IssueNumber: String);
@@ -238,14 +246,14 @@ begin
       l_SQL:= 'SELECT Issue FROM Issues where Issue = :Issue';
       l_Table:= GetTable(l_SQL);
       try
+        ParamsClear;
+        AddParamText(':Issue', IssueNumber);
+        AddParamText(':Title', AnsiToUTF8(IssueTitle));
         if l_Table.Count = 0 then
-        begin
-          ParamsClear;
-          AddParamText(':Issue', IssueNumber);
-          AddParamText(':Title', AnsiToUTF8(IssueTitle));
-          l_SQL:= Format('INSERT INTO %s (Issue, Title, Active) Values (:Issue, :Title, 1)', [IssueTable]);
-          ExecSQL(l_SQL);
-        end; // l_Table.Count = 0
+          l_SQL:= Format('INSERT INTO %s (Issue, Title, Active) Values (:Issue, :Title, 1)', [IssueTable])
+        else
+          l_SQL:= Format('UPDATE %s SET Title = :Title, Active = 1 WHERE Issue = :Issue', [IssueTable]);
+        ExecSQL(l_SQL);
       finally
         FreeAndNil(l_Table);
       end;

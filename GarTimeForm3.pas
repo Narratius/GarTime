@@ -120,8 +120,9 @@ begin
   // Строим и показываем отчет за день
   with TDailyReportForm.Create(nil) do
   try
-   f_Issues.FillDayReport(ReportList.Items);
-   ShowModal;
+   Execute(f_Issues);
+   //f_Issues.FillDayReport(ReportList.Items);
+   //ShowModal;
   finally
     Free;
   end;

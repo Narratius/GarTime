@@ -1,17 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2017.03.01 13:01:30.253.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtIntfs.pas</Transaction>
-    <Transaction>2017.03.01 13:13:07.821.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtSQL.pas</Transaction>
-    <Transaction>2017.03.01 13:19:46.570.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtSQL.pas</Transaction>
-    <Transaction>2017.03.01 15:07:32.763.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtUtils.pas</Transaction>
-    <Transaction>2017.03.02 14:39:21.144.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtLogFile.pas</Transaction>
-    <Transaction>2017.03.03 11:12:09.604.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtIssues.pas</Transaction>
-    <Transaction>2017.03.14 13:09:31.341.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtIssueCloseDlg.pas</Transaction>
-    <Transaction>2017.03.14 13:09:31.341.dfm,C:\#My Work\GarTime\Unit1.dfm=C:\#My Work\GarTime\gtIssueCloseDlg.dfm</Transaction>
-    <Transaction>2017.03.24 11:24:41.844.pas,C:\#My Work\GarTime\Unit1.pas=C:\#My Work\GarTime\gtReportForm.pas</Transaction>
-    <Transaction>2017.03.24 11:24:41.844.dfm,C:\#My Work\GarTime\Unit1.dfm=C:\#My Work\GarTime\gtReportForm.dfm</Transaction>
-    <Transaction>2017.04.07 09:48:37.626.pas,C:\#My Work\GarTime\OKCANCL2.pas=C:\#My Work\GarTime\gtIssueOpenDlg.pas</Transaction>
-    <Transaction>2017.04.07 09:48:37.626.dfm,C:\#My Work\GarTime\OKCANCL2.dfm=C:\#My Work\GarTime\gtIssueOpenDlg.dfm</Transaction>
-  </Transactions>
-</BorlandProject>
+<BorlandProject/>

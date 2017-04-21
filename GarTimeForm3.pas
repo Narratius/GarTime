@@ -190,6 +190,13 @@ const
 {$ENDIF}
 procedure TMainForm.AppEventsMessage(var Msg: tagMSG;
   var Handled: Boolean);
+
+procedure lp_Start;
+begin
+  Start;
+  f_Issues.ResumeIssue;
+end;
+
 begin
  if Msg.message = WM_WTSSESSION_Change then
  begin
@@ -197,14 +204,14 @@ begin
   gLog.Msg('WTS_XXXXX=%s', [WTS_NAMES[Msg.wParam]]);
   {$ENDIF}
   case Msg.wParam of
-(*   WTS_CONSOLE_CONNECT: s:= 'A session was connected to the console terminal.';
-   WTS_CONSOLE_DISCONNECT: S:= 'A session was disconnected from the console terminal.';
-*) WTS_REMOTE_CONNECT: Stop;
+   //WTS_CONSOLE_CONNECT: lp_Start;
+   WTS_CONSOLE_DISCONNECT: Stop;
+   WTS_REMOTE_CONNECT: lp_Start;
    WTS_REMOTE_DISCONNECT: Stop;
-   WTS_SESSION_LOGON: begin Start; f_Issues.ResumeIssue; end;
+   WTS_SESSION_LOGON: lp_Start;
    WTS_SESSION_LOGOFF: Stop;
    WTS_SESSION_LOCK: Stop;
-   WTS_SESSION_UNLOCK: begin Start; f_Issues.ResumeIssue; end;
+   WTS_SESSION_UNLOCK: lp_Start;
   end;
  end
  else

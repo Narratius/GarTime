@@ -3,8 +3,8 @@ object DailyReportForm: TDailyReportForm
   Top = 0
   BorderStyle = bsDialog
   Caption = #1044#1085#1077#1074#1085#1086#1081' '#1086#1090#1095#1077#1090
-  ClientHeight = 217
-  ClientWidth = 428
+  ClientHeight = 214
+  ClientWidth = 629
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +16,8 @@ object DailyReportForm: TDailyReportForm
   PixelsPerInch = 96
   TextHeight = 13
   object ClipButton: TButton
-    Left = 248
-    Top = 187
+    Left = 449
+    Top = 184
     Width = 91
     Height = 25
     Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100
@@ -25,8 +25,8 @@ object DailyReportForm: TDailyReportForm
     OnClick = ClipButtonClick
   end
   object Button2: TButton
-    Left = 345
-    Top = 187
+    Left = 546
+    Top = 184
     Width = 75
     Height = 25
     Caption = #1054#1050
@@ -36,7 +36,7 @@ object DailyReportForm: TDailyReportForm
   object ReportGrid: TStringGrid
     Left = 8
     Top = 8
-    Width = 412
+    Width = 613
     Height = 173
     ColCount = 3
     FixedCols = 0

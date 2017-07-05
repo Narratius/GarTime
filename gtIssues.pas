@@ -25,7 +25,9 @@ type
    procedure FillDayReport(aReport: TStrings);
    procedure ResumeIssue;
    procedure GetIssues(Issues: TStrings);
+   function GetIssueNumber(const IssueTitle: String): String;
    function GetIssueTitle(const IssueNumber: String): String;
+   procedure GetIssuesTitles(IssuesTitles: TStrings);
    function MakeDayReport: TSQLiteTable;
  end;
 
@@ -109,6 +111,18 @@ begin
   end;
 end;
 
+function TgtIssues.GetIssueNumber(const IssueTitle: String): String;
+var
+ l_Table: TSQLiteTable;
+begin
+  Result:= '';
+  f_DB.ParamsClear;
+  f_DB.AddParamText(':Issue', AnsiToUtf8(IssueTitle));
+  l_Table:= f_DB.GetTable('SELECT Issue FROM Issues WHERE Title = :Issue');
+  if l_Table.Count > 0 then
+    Result:= UTF8ToAnsi(l_Table.FieldAsString(0));
+end;
+
 procedure TgtIssues.GetIssues(Issues: TStrings);
 var
  l_Table: TSQLiteTable;
@@ -118,6 +132,19 @@ begin
   while not l_Table.EOF do
   begin
     Issues.Add(l_Table.FieldAsString(0));
+    l_Table.Next;
+  end;
+end;
+
+procedure TgtIssues.GetIssuesTitles(IssuesTitles: TStrings);
+var
+ l_Table: TSQLiteTable;
+begin
+ IssuesTitles.Clear;
+  l_Table:= f_DB.GetTable('SELECT Title FROM Issues ORDER BY Issue');
+  while not l_Table.EOF do
+  begin
+    IssuesTitles.Add(UTF8ToAnsi(l_Table.FieldAsString(0)));
     l_Table.Next;
   end;
 end;

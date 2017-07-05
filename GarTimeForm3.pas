@@ -197,11 +197,44 @@ begin
   f_Issues.ResumeIssue;
 end;
 
+var
+  S : String;
 begin
+  {$IFDEF Debug}
+  case Msg.WParam of
+    //WTS_CONSOLE_CONNECT: S := 'A new session #%d was connected to the local console.';
+    WTS_CONSOLE_DISCONNECT: S := 'The session #%d was removed from the local console.';
+
+    WTS_REMOTE_CONNECT : S := 'A new session #%d was connected to the remote console.';
+    WTS_REMOTE_DISCONNECT: S := 'The session #%d was removed from the remote console.';
+    WTS_SESSION_LOGON: S := 'A user has logged on to the session #%d.';
+    WTS_SESSION_LOGOFF: S := 'A user logged off. Session #%d';
+
+    //These messages are not send, if the winlogon desktop is shown without
+    //password input
+    WTS_SESSION_LOCK: S := 'The session #%d is locked.';
+    WTS_SESSION_UNLOCK: S := 'The session #%d is unlocked.';
+    (*
+    WTS_SESSION_REMOTE_CONTROL:
+      begin
+        S := 'The session #%d changed its remote status. New status is: ';
+        if GetSystemMetrics(SM_REMOTECONTROL) = 0 then
+          S := S + 'Session is locally controlled.'
+        else
+          S := S + 'Session is remotely controlled.';
+      end;
+    *)  
+  else
+    S := '';
+  end;
+  if Length(S) > 0 then
+    gLog.Msg(S,[Msg.LParam]);
+ {$ENDIF}
+
  if Msg.message = WM_WTSSESSION_Change then
  begin
   {$IFDEF Debug}
-  gLog.Msg('WTS_XXXXX=%s', [WTS_NAMES[Msg.wParam]]);
+  //gLog.Msg('WTS_XXXXX=%s', [WTS_NAMES[Msg.wParam]]);
   {$ENDIF}
   case Msg.wParam of
    //WTS_CONSOLE_CONNECT: lp_Start;

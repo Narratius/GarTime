@@ -43,6 +43,7 @@ begin
   // Забрать содержимое Мемо в буфер
   l_Text:= TStringList.Create;
   try
+    l_Text.Add('Итого ' + DateTimeToStr(Date) + ':');
     for I := 1 to ReportGrid.RowCount - 2 do
       with ReportGrid do
         l_Text.Add(Format('%d. http://ws2.medwork.ru:33380/redmine/issues/%s (%s) %s',

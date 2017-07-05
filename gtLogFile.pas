@@ -30,7 +30,7 @@ begin
   inherited Create;
   l_FileName:= IfThen(aFileName = '', ChangeFileExt(ParamStr(0), '.log'), aFileName);
   l_Mode:= IfThen(FileExists(l_FileName), fmOpenWrite, fmCreate);
-  f_Stream:= TFileStream.Create(l_FileName, l_Mode, fmShareDenyWrite or fmShareDenyNone);
+  f_Stream:= TFileStream.Create(l_FileName, l_Mode or fmShareDenyWrite);
   f_Stream.Seek(0, soEnd);
 end;
 

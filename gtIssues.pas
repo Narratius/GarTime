@@ -50,7 +50,7 @@ begin
   begin
     // Задачи
     l_SQL := Format('CREATE TABLE %s ([ID] INTEGER PRIMARY KEY, [Issue] int not null, ', [IssueTable]);
-    l_SQL := l_SQL + '[Title] varchar(100) null [Active] int null, [Closed] int null);';
+    l_SQL := l_SQL + '[Title] varchar(100) null, [Active] int null, [Closed] int null);';
     f_db.execsql(l_SQL);
     f_db.execsql(Format('CREATE INDEX %sIndex ON [%s]([Issue]);', [IssueTable, IssueTable]));
     // Время по задачам

@@ -1,17 +1,17 @@
 unit GarTimeForm3;
 
 interface
-{.$DEFINE GarTime} // Для синхронизации с Confluence нужно включить
-{$DEFINE Issues}
+{$DEFINE GarTime} // Для синхронизации с Confluence нужно включить
+{.$DEFINE Issues}
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Menus, ActnList, ImgList, AppEvnts,
-  CoolTrayIcon, AutoRunner, gtIntfs
+  CoolTrayIcon, AutoRunner, gtIntfs, System.ImageList, System.Actions
   {$IFDEF Issues}
   , gtIssues
   {$ENDIF}
   {$IFDEF GarTime}
-  , ddAppConfigTypes
+  , Propertys
   {$ENDIF};
 
 type
@@ -29,15 +29,10 @@ type
     TrayIcon: TCoolTrayIcon;
     TrayMenu: TPopupMenu;
     actConfig: TAction;
-    N1: TMenuItem;
-    N2: TMenuItem;
-    N3: TMenuItem;
+    DividerItem: TMenuItem;
     actStartIssue: TAction;
     actFinishIssue: TAction;
-    N4: TMenuItem;
-    N5: TMenuItem;
     actDailyReport: TAction;
-    N6: TMenuItem;
     procedure actConfigExecute(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
     procedure actShowExecute(Sender: TObject);
@@ -58,7 +53,7 @@ type
     f_AutoRunner: TAutoRunner;
     f_CanClose: Boolean;
     {$IFDEF GarTime}
-    f_Config: TddAppConfigNode;
+    f_Config: TProperties;
     {$ENDIF}
     {$IFDEF Issues}
     f_Issues: TgtIssues;
@@ -83,6 +78,7 @@ type
     procedure SwitchMDPStatus(aStatus: Integer);
     procedure UpdateDayInfo;
     procedure WMQueryEndSession(var Msg: TWMQueryEndSession); message WM_QUERYENDSESSION;
+    procedure CreateTrayMenu;
   end;
 
 var
@@ -96,10 +92,13 @@ Uses
  DateUtils, Math, StrUtils,
  IdHTTP,
  jwaWTSApi32,
- gtSQL, gtUtils
+ gtSQL, gtUtils,
+ ddLogFile
+ {$IFDEF Issues}
  ,gtIssueCloseDlg, gtReportForm, gtIssueOpenDlg
+ {$ENDIF}
  {$IFDEF GarTime}
- , ddAppConfigUtils, l3String,  l3Base, ddConfigStorages, l3SysUtils
+ , PropertyUtils
  {$ENDIF}
   ;
 
@@ -110,13 +109,14 @@ const
 procedure TMainForm.actConfigExecute(Sender: TObject);
 begin
  {$IFDEF GarTime}
- if ExecuteNodeDialog(f_Config) then
-  f_Config.Save(MakedefaultStorage);
+ if ShowPropDialog('Настройки приложения', f_Config) then
+  SaveToFile(ChangeFileExt(Application.ExeName, '.config'), f_Config, False);
  {$ENDIF}
 end;
 
 procedure TMainForm.actDailyReportExecute(Sender: TObject);
 begin
+  {$IFDEF Issues}
   // Строим и показываем отчет за день
   with TDailyReportForm.Create(nil) do
   try
@@ -126,6 +126,7 @@ begin
   finally
     Free;
   end;
+  {$ENDIF}
 end;
 
 procedure TMainForm.actExitExecute(Sender: TObject);
@@ -139,12 +140,14 @@ var
  l_Comment: String;
  l_Close: Boolean;
 begin
+  {$IFDEF Issues}
   if IssueCloseDlg(l_Comment, l_Close) then
   begin
     f_Timer.Stop;
     f_Issues.Finish(l_Comment);
     f_Timer.Start;
   end;
+  {$ENDIF}
 end;
 
 procedure TMainForm.actShowExecute(Sender: TObject);
@@ -154,16 +157,17 @@ end;
 
 procedure TMainForm.actShowStatisticExecute(Sender: TObject);
 begin
+ 
  TrayIcon.ShowBalloonHint('Учет рабочего времени',
-                          Format('Задача: %s'#10'Сегодня: %s'#10'%s'#10'Домой в: %s',
-                          [f_Issues.GetActiveIssue, f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
+                          Format({$IFDEF Issues}'Задача: %s'#10'Сегодня: %s'#10'%s'#10'Домой в: %s'{$ELSE}'Сегодня: %s'#10'%s'#10'Домой в: %s'{$ENDIF},
+                         [{$IFDEF Issues}f_Issues.GetActiveIssue,{$ENDIF} f_RealTimeStr, f_MonthTimeStr, f_HomeStr]), bitInfo, 30);
 end;
 
 procedure TMainForm.actStartIssueExecute(Sender: TObject);
 var
  l_Issue, l_ActiveIssue, l_Title: String;
 begin
- //
+ {$IFDEF Issues}
  with TIssueOpenDialog.Create(nil) do
  try
    if Execute(f_Issues, l_Issue, l_Title) then
@@ -178,6 +182,7 @@ begin
  finally
    Free;
  end;
+ {$ENDIF}
 end;
 
 {$IFDEF Debug}
@@ -194,7 +199,7 @@ procedure TMainForm.AppEventsMessage(var Msg: tagMSG;
 procedure lp_Start;
 begin
   Start;
-  f_Issues.ResumeIssue;
+  {$IFDEF Issues}f_Issues.ResumeIssue;{$ENDIF}
 end;
 
 var
@@ -228,7 +233,7 @@ begin
     S := '';
   end;
   if Length(S) > 0 then
-    gLog.Msg(S,[Msg.LParam]);
+    Msg2Log(S,[Msg.LParam]);
  {$ENDIF}
 
  if Msg.message = WM_WTSSESSION_Change then
@@ -260,7 +265,7 @@ end;
 procedure TMainForm.btStartClick(Sender: TObject);
 begin
  Start;
- f_Issues.ResumeIssue;
+ {$IFDEF Issues}f_Issues.ResumeIssue;{$ENDIF}
 end;
 
 procedure TMainForm.btStopClick(Sender: TObject);
@@ -269,34 +274,61 @@ begin
 end;
 
 procedure TMainForm.CreateConfig;
-{$IFDEF GarTime}
-var
- l_Storage: IddConfigStorage;
-{$ENDIF}
 begin
  {$IFDEF GarTime}
- f_Config := MakeNode('Config', 'Конфигурация',
-              //MakeDivider('Общие настройки',
-              //MakeDivider('Confluence',
-               MakeString('mdpLogin', 'Имя пользователя', '',
-               MakeString('mdpPassword', 'Пароль', '', '*',
-               nil))
-              //))
-             );
- l_Storage:= MakedefaultStorage;
- try
-  f_Config.Load(l_Storage);
- finally
-  l_Storage:= nil;
+ f_Config := TProperties.Create(nil);
+ with f_Config do
+ begin
+   DefineString('mdpURL', 'Вызов MDP');
+   Values['mdpURL']:= 'http://mdp.garant.ru/ru/garant/MDProcess/ConfluenceMDChange/RequestSupport/RequestXPlugin/RequestXPackage/changeactiveuserstate.action?type=%d&os_password=%s&os_username=%s';
+   DefineString('mdpLogin', 'Имя пользователя');
+   DefinePassword('mdpPassword', 'Пароль');
  end;
+ LoadFromFile(ChangeFileExt(Application.ExeName, '.config'), f_Config, False);
  {$ENDIF}
 end;
 
 
+procedure TMainForm.CreateTrayMenu;
+var
+ l_Index: Integer;
+ l_Item: TMenuItem;
+begin
+ { TODO : Создать различные пункты меню для разных конфигураций }
+ with TrayMenu do
+ begin
+   l_Index:= Items.IndexOf(DividerItem);
+ {$IFDEF Issues}
+   // Старт
+   l_Item:= TMenuItem.Create(TrayMenu);
+   l_Item.Action:= actStartIssue;
+   Items.Insert(l_Index+1, l_Item);
+   // Стоп
+   l_Item:= TMenuItem.Create(TrayMenu);
+   l_Item.Action:= actFinishIssue;
+   Items.Insert(l_Index+2, l_Item);
+   // Отчет
+   l_Item:= TMenuItem.Create(TrayMenu);
+   l_Item.Action:= actDailyReport;
+   Items.Insert(l_Index+3, l_Item);
+   // Разделитель
+   l_Item:= TMenuItem.Create(TrayMenu);
+   l_Item.Caption:= '-';
+   Items.Insert(l_Index+4, l_Item);
+ {$ENDIF}
+ {$IFDEF GarTime}
+   // Конфигурация
+   l_Item:= TMenuItem.Create(TrayMenu);
+   l_Item.Action:= actConfig;
+   Items.Insert(l_Index+1, l_Item);
+ {$ENDIF}
+ end;
+end;
+
 procedure TMainForm.DestroyConfig;
 begin
  {$IFDEF GarTime}
- f_Config.Save(MakedefaultStorage);
+ SaveToFile(ChangeFileExt(Application.ExeName, '.config'), f_Config, False);
  FreeAndNil(f_Config);
  {$ENDIF}
 end;
@@ -321,6 +353,7 @@ begin
  f_AutoRunner.AutoRun:= True;
  WTSRegisterSessionNotification(Handle, 0);
  CreateConfig;
+ CreateTrayMenu;
  try
   f_Timer := TgtSQLTimer.Create();
   timeUpdate.Interval:= 1000*60; // 1 минута
@@ -418,10 +451,10 @@ end;
 procedure TMainForm.Start;
 begin
  {$IFDEF Debug}
- gLog.Msg('Start');
+ Msg2Log('Start');
  {$ENDIF}
  {$IFDEF GarTime}
- if not l3IsRemoteSession then
+ if not IsRemoteSession then
  begin
  {$ENDIF}
   f_Timer.Start;
@@ -432,7 +465,7 @@ begin
   {$ENDIF}
   UpdateDayInfo;
  {$IFDEF GarTime}
- end; // not l3IsRemoteSession
+ end; // not IsRemoteSession
  {$ENDIF}
 end;
 
@@ -447,7 +480,7 @@ end;
 procedure TMainForm.Stop;
 begin
  {$IFDEF Debug}
- gLog.Msg('Stop');
+ Msg2Log('Stop');
  {$ENDIF}
  if Started then
  begin
@@ -467,19 +500,23 @@ var
  l_Request: ShortString;
 begin
  {$IFDEF GarTime}
- l_Request:= Format('http://mdp.garant.ru/ru/garant/MDProcess/ConfluenceMDChange/RequestSupport/RequestXPlugin/RequestXPackage/changeactiveuserstate.action?type=%d&os_password=%s&os_username=%s',
-                    [aStatus, f_Config.AsString['mdpPassword'], f_Config.AsString['mdpLogin']]);
- with TidHTTP.Create do
- try
-  try
-   Get(l_Request);
-  except
-   on E: Exception do
-    l3System.Msg2Log(E.Message);
-  end;
- finally
-  Free;
- end
+ // 'http://mdp.garant.ru/ru/garant/MDProcess/ConfluenceMDChange/RequestSupport/RequestXPlugin/RequestXPackage/changeactiveuserstate.action?type=%d&os_password=%s&os_username=%s'
+ if (f_Config.Values['mdpPassword'] <> '') and (f_Config.Values['mdpLogin'] <> '') then
+ begin
+   l_Request:= Format(f_Config.Values['mdpURL'],
+                      [aStatus, f_Config.Values['mdpPassword'], f_Config.Values['mdpLogin']]);
+   with TidHTTP.Create do
+   try
+    try
+     Get(l_Request);
+    except
+     on E: Exception do
+      Msg2Log(E.Message);
+    end;
+   finally
+    Free;
+   end
+ end;
  {$ENDIF}
 end;
 
@@ -499,22 +536,23 @@ var
  l_Min: Word;
  l_Hours: Word;
  l_Start: TDateTime;
- l_GarantTimeStr: String;
+ l_GarantTimeStr, l_MonthStr: String;
 begin
  // Сколько отработано сегодня по-настоящему
  f_RealTimeStr:= f_Timer.DaySheet(l_Minutes, l_GarMinutes);
- f_HomeStr:= TimeToStr(IncMinute(Time, 8*60 - l_Minutes));          // 8 - отработанное время + сейчас
+ l_MonthStr:= f_Timer.MonthSheet(l_MonthMinutes, l_GarMinutes, False);
+ f_HomeStr:= TimeToStr(IncMinute(Time, -l_MonthMinutes {Х+ 8*60 - l_Minutes}));          // 8 - отработанное время + сейчас
  {$IFDEF GarTime}
  // Сколько сегодня отработано по-гарантовски
  DivMod(l_Minutes, 60, l_Hours, l_Min);
  Inc(l_Hours, ifThen(l_Min > 30, 1, 0));
  l_GarantTimeStr:= Format('%d %s', [l_Hours, getHoursStr(l_Hours)]);
  // Сколько осталось отработать с учетом долга
- f_MonthTimeStr:= Format('Гарвремя: %s'#10'За месяц: (%s)', [l_GarantTimeStr, f_Timer.MonthSheet(l_MonthMinutes, False)]);
+ f_MonthTimeStr:= Format('Гарвремя: %s'#10'За месяц: (%s)', [l_GarantTimeStr, l_MonthStr]);
  TrayIcon.Hint:= IfThen(Started, Format('Отработано %s (%s)', [l_GarantTimeStr, f_RealTimeStr]), 'Учет рабочего времени не начат');
  {$ELSE}
  // Сколько осталось отработать с учетом долга
- f_MonthTimeStr:= Format('За месяц: (%s)', [f_Timer.MonthSheet(l_MonthMinutes, l_GarMinutes, False)]);
+ f_MonthTimeStr:= Format('За месяц: (%s)', [l_MonthStr]);
  TrayIcon.Hint:= IfThen(Started, Format('Отработано %s ', [f_RealTimeStr]), 'Учет рабочего времени не начат');
  {$ENDIF}
  if Started then

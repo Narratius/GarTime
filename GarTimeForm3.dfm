@@ -31,23 +31,8 @@ object MainForm: TMainForm
       Action = actStart
       Default = True
     end
-    object N2: TMenuItem
+    object DividerItem: TMenuItem
       Caption = '-'
-    end
-    object N4: TMenuItem
-      Action = actStartIssue
-    end
-    object N5: TMenuItem
-      Action = actFinishIssue
-    end
-    object N6: TMenuItem
-      Action = actDailyReport
-    end
-    object N3: TMenuItem
-      Caption = '-'
-    end
-    object N1: TMenuItem
-      Action = actConfig
     end
     object itemExit: TMenuItem
       Action = actExit
@@ -99,7 +84,7 @@ object MainForm: TMainForm
     Left = 216
     Top = 32
     Bitmap = {
-      494C010104000900600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

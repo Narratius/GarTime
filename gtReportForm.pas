@@ -49,7 +49,7 @@ begin
         l_Text.Add(Format('%d. http://ws2.medwork.ru:33380/redmine/issues/%s (%s) %s',
             [i, Cells[cNumber, i], Cells[cTitle, i], Cells[cTime, i]]));
     // Неплохо бы поменять язык на русский :)
-    Clipboard.SetTextBuf(PAnsiChar(l_Text.Text));
+    Clipboard.SetTextBuf({PAnsiChar}PWideChar(l_Text.Text));
   finally
     FreeAndNil(l_text);
   end;

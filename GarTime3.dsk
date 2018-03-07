@@ -1,95 +1,49 @@
-[Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\DateUtils.pas',0,1,261,63,299,0,0,,
-File_1=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\StrUtils.pas',0,1,1,93,6,0,0,,
-File_2=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas',0,1,18754,1,18775,0,0,,
+﻿[Closed Files]
+File_0=TSourceModule,'d:\#my work\quide\internal\dd\ddLogFile.pas',0,1,3,35,58,0,0,,
+File_1=TSourceModule,'d:\#my work\quide\internal\dd\ddAppConfigUtils.pas',0,1,1,40,4,0,0,,
+File_2=TSourceModule,'d:\#my work\sqlite3\SQliteTable3.pas',0,1,1442,60,1482,0,0,,
+File_3=TSourceModule,'d:\#my work\sqlite3\SQLite3.pas',0,1,165,35,184,0,0,,
+File_4=TSourceModule,'d:\#my work\CoolTrayIcon\Source\CoolTrayIcon.pas',0,1,1274,29,1297,0,0,,
+File_5=TSourceModule,'D:\#My Work\GarTime\gtLogFile.pas',0,1,1,6,8,0,0,,
+File_6=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\DateUtils.pas',0,1,261,63,299,0,0,,
+File_7=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\common\StrUtils.pas',0,1,1,93,6,0,0,,
+File_8=TSourceModule,'c:\program files (x86)\codegear\rad studio\5.0\source\Win32\rtl\win\Windows.pas',0,1,18754,1,18775,0,0,,
 
 [Modules]
-Module0=C:\#My Work\GarTime\gtIssues.pas
-Module1=C:\#My Work\GarTime\gtIssueOpenDlg.pas
-Module2=C:\#My Work\GarTime\gtReportForm.pas
-Module3=C:\#My Work\GarTime\GarTime3.dproj
-Module4=C:\#My Work\GarTime\GarTimeForm3.pas
-Module5=C:\#My Work\jwa\Examples\WTS\Notification\MainForm.pas
-Module6=C:\#My Work\GarTime\gtLogFile.pas
-Module7=C:\#My Work\sqlite3\SQliteTable3.pas
-Module8=C:\#My Work\GarTime\gtSQL.pas
-Module9=C:\#My Work\GarTime\gtIssueCloseDlg.pas
-Module10=C:\#My Work\GarTime\gtIntfs.pas
-Module11=C:\#My Work\GarTime\gtTypes.pas
-Module12=C:\#My Work\GarTime\gtUtils.pas
-Module13=default.htm
-Count=14
+Module0=D:\#My Work\GarTime\GarTimeForm3.pas
+Module1=d:\#my work\quide\internal\Properties\PropertyUtils.pas
+Module2=d:\#my work\quide\internal\Properties\SizeableControls.pas
+Module3=D:\#My Work\GarTime\gtUtils.pas
+Module4=default.htm
+Module5=d:\#my work\quide\internal\Properties\Propertys.pas
+Module6=D:\#My Work\GarTime\gtSQL.pas
+Count=7
 EditWindowCount=1
 
-[C:\#My Work\GarTime\gtIssues.pas]
+[D:\#My Work\GarTime\GarTimeForm3.pas]
 ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
 
-[C:\#My Work\GarTime\gtIssueOpenDlg.pas]
+[d:\#my work\quide\internal\Properties\PropertyUtils.pas]
 ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
 
-[C:\#My Work\GarTime\gtReportForm.pas]
+[d:\#my work\quide\internal\Properties\SizeableControls.pas]
 ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
 
-[C:\#My Work\GarTime\GarTime3.dproj]
-ModuleType=TBaseProject
-
-[C:\#My Work\GarTime\GarTimeForm3.pas]
+[D:\#My Work\GarTime\gtUtils.pas]
 ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
-
-[C:\#My Work\jwa\Examples\WTS\Notification\MainForm.pas]
-ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtLogFile.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\#My Work\sqlite3\SQliteTable3.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtSQL.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtIssueCloseDlg.pas]
-ModuleType=TSourceModule
-FormState=1
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtIntfs.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtTypes.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\#My Work\GarTime\gtUtils.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
 
 [default.htm]
 ModuleType=TURLModule
 
+[d:\#my work\quide\internal\Properties\Propertys.pas]
+ModuleType=TSourceModule
+
+[D:\#My Work\GarTime\gtSQL.pas]
+ModuleType=TSourceModule
+
 [EditWindow0]
-ViewCount=14
-CurrentEditView=C:\#My Work\GarTime\gtIssues.pas
+ViewCount=7
+CurrentEditView=D:\#My Work\GarTime\GarTimeForm3.pas
 View0=0
 View1=1
 View2=2
@@ -97,13 +51,6 @@ View3=3
 View4=4
 View5=5
 View6=6
-View7=7
-View8=8
-View9=9
-View10=10
-View11=11
-View12=12
-View13=13
 PercentageSizes=1
 Create=1
 Visible=1
@@ -111,28 +58,27 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=10000
-Height=9260
+Width=15000
+Height=9726
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
-ClientHeight=9260
+ClientWidth=15000
+ClientHeight=9726
 DockedToMainForm=1
-MessageView=MessageView@EditWindow0
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
-LeftPanelSize=1896
-LeftPanelClients=StructureView,PropertyInspector
-LeftPanelData=00000800010100000000900F0000000000000168070000000000000100000000530E00001100000053747275637475726556696577466F726D0100000000AB1B00001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelSize=1898
+LeftPanelClients=PropertyInspector,DockSite3
+LeftPanelData=000008000101000000004318000000000000016A070000000000000100000000580E000009000000446F636B53697465330100000000541E00001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=2000
-RightPanelClients=DockSite2,ToolForm
-RightPanelData=00000800010100000000900F00000000000001D00700000000000001000000004412000009000000446F636B53697465320100000000AB1B000008000000546F6F6C466F726DFFFFFFFF
-BottomPanelSize=1806
-BottomPanelClients=MessageView@EditWindow0,DockSite1
-BottomPanelData=0000080001020100000009000000446F636B53697465317245000000000000020E070000000000000100000000724500000B0000004D65737361676556696577FFFFFFFF
+RightPanelClients=DockSite2,DockSite4
+RightPanelData=00000800010100000000431800000000000001D00700000000000001000000004612000009000000446F636B53697465320100000000541E000009000000446F636B5369746534FFFFFFFF
+BottomPanelSize=1523
+BottomPanelClients=DockSite1,MessageView
+BottomPanelData=0000080001020100000009000000446F636B53697465313E4900000000000002F30500000000000001000000003E4900000F0000004D65737361676556696577466F726DFFFFFFFF
 BottomMiddlePanelSize=0
-BottomMiddlePanelClients=DockSite0
-BottomMiddelPanelData=0000080001000100000009000000446F636B53697465303619000000000000007D1B000000000000FFFFFFFF
+BottomMiddlePanelClients=DockSite0,GraphDrawingModel
+BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779A1D00000000000002F106000000000000FFFFFFFF
 
 [View0]
 CustomEditViewType=TWelcomePageView
@@ -140,152 +86,75 @@ WelcomePageURL=bds:/default.htm
 
 [View1]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\GarTimeForm3.pas
-CursorX=43
-CursorY=197
-TopLine=186
+Module=D:\#My Work\GarTime\GarTimeForm3.pas
+CursorX=12
+CursorY=166
+TopLine=135
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\GarTime\GarTimeForm3.pas
+EditViewName=D:\#My Work\GarTime\GarTimeForm3.pas
 
 [View2]
 CustomEditViewType=TEditView
-Module=C:\#My Work\jwa\Examples\WTS\Notification\MainForm.pas
-CursorX=9
-CursorY=39
-TopLine=71
+Module=D:\#My Work\GarTime\gtUtils.pas
+CursorX=1
+CursorY=41
+TopLine=38
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\jwa\Examples\WTS\Notification\MainForm.pas
+EditViewName=D:\#My Work\GarTime\gtUtils.pas
 
 [View3]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtIssueOpenDlg.pas
-CursorX=41
-CursorY=43
-TopLine=31
+Module=d:\#my work\quide\internal\Properties\PropertyUtils.pas
+CursorX=36
+CursorY=184
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtIssueOpenDlg.pas
+EditViewName=d:\#my work\quide\internal\Properties\PropertyUtils.pas
 
 [View4]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtReportForm.pas
-CursorX=130
-CursorY=57
-TopLine=35
+Module=d:\#my work\quide\internal\Properties\SizeableControls.pas
+CursorX=26
+CursorY=94
+TopLine=73
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtReportForm.pas
+EditViewName=d:\#my work\quide\internal\Properties\SizeableControls.pas
 
 [View5]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\GarTime3.dpr
-CursorX=16
-CursorY=22
-TopLine=1
+Module=d:\#my work\quide\internal\Properties\Propertys.pas
+CursorX=1
+CursorY=220
+TopLine=216
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\GarTime\GarTime3.dpr
+EditViewName=d:\#my work\quide\internal\Properties\Propertys.pas
 
 [View6]
 CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtIssueCloseDlg.pas
-CursorX=54
-CursorY=20
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtIssueCloseDlg.pas
-
-[View7]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtTypes.pas
-CursorX=20
-CursorY=256
-TopLine=231
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtTypes.pas
-
-[View8]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtUtils.pas
+Module=D:\#My Work\GarTime\gtSQL.pas
 CursorX=1
-CursorY=21
+CursorY=1
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtUtils.pas
+EditViewName=D:\#My Work\GarTime\gtSQL.pas
 
-[View9]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtLogFile.pas
-CursorX=71
-CursorY=33
-TopLine=19
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtLogFile.pas
-
-[View10]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtSQL.pas
-CursorX=41
-CursorY=36
-TopLine=16
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtSQL.pas
-
-[View11]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtIssues.pas
-CursorX=40
-CursorY=121
-TopLine=94
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtIssues.pas
-
-[View12]
-CustomEditViewType=TEditView
-Module=C:\#My Work\sqlite3\SQliteTable3.pas
-CursorX=9
-CursorY=360
-TopLine=335
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\sqlite3\SQliteTable3.pas
-
-[View13]
-CustomEditViewType=TEditView
-Module=C:\#My Work\GarTime\gtIntfs.pas
-CursorX=1
-CursorY=18
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\#My Work\GarTime\gtIntfs.pas
+[UndockedDesigner]
+Count=0
 
 [Watches]
-Count=3
-Watch0='l_Table.FieldAsString(0)',256,0,18,1,0,'Watches'
-Watch1='l_Table.FieldAsString(1)',256,0,18,1,0,'Watches'
-Watch2='l_Table.FieldAsDouble(2)',256,0,18,1,0,'Watches'
+Count=0
 
 [WatchWindow]
 WatchColumnWidth=120
@@ -297,21 +166,36 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=212
-LRDockWidth=13604
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=213
+LRDockWidth=13602
 Dockable=1
 StayOnTop=0
 
 [Breakpoints]
 Count=0
 
-[AddressBreakpoints]
+[EmbarcaderoWin32Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoWin64Debugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoOSXDebugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoIOS64DeviceDebugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoIOS32DeviceDebugger_AddressBreakpoints]
+Count=0
+
+[EmbarcaderoAndroidDebugger_AddressBreakpoints]
 Count=0
 
 [Main Window]
@@ -320,17 +204,17 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=141
-Top=269
-Width=8927
-Height=8529
-MaxLeft=-5
+Left=12523
+Top=0
+Width=8930
+Height=8526
+MaxLeft=-8
 MaxTop=-10
-MaxWidth=10083
-MaxHeight=10154
-ClientWidth=10000
-ClientHeight=9779
-BottomPanelSize=8917
+MaxWidth=8930
+MaxHeight=8526
+ClientWidth=15000
+ClientHeight=10335
+BottomPanelSize=9346
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -343,13 +227,32 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=4356
+Height=4390
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=4356
+ClientHeight=4390
 TBDockHeight=5904
-LRDockWidth=2354
+LRDockWidth=2352
+Dockable=1
+StayOnTop=0
+
+[MessageView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=18
+Width=15000
+Height=1402
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=15000
+ClientHeight=1402
+TBDockHeight=1402
+LRDockWidth=2773
 Dockable=1
 StayOnTop=0
 
@@ -360,15 +263,168 @@ Visible=1
 Docked=1
 State=0
 Left=0
-Top=528
+Top=0
 Width=2000
-Height=2279
+Height=3028
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=2279
-TBDockHeight=7019
+ClientHeight=3028
+TBDockHeight=7154
 LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+
+[ClipboardHistory]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=1906
+Height=4533
+MaxLeft=-8
+MaxTop=-10
+ClientWidth=1781
+ClientHeight=4136
+TBDockHeight=4533
+LRDockWidth=1906
+Dockable=1
+StayOnTop=0
+
+[ProjectStatistics]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=0
+State=0
+Left=0
+Top=0
+Width=2062
+Height=5213
+MaxLeft=-8
+MaxTop=-10
+ClientWidth=1938
+ClientHeight=4817
+TBDockHeight=5213
+LRDockWidth=2062
+Dockable=1
+StayOnTop=0
+
+[PropertyInspector]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=394
+Width=1898
+Height=4075
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1898
+ClientHeight=4075
+TBDockHeight=9014
+LRDockWidth=1898
+Dockable=1
+StayOnTop=0
+SplitPos=111
+
+[ClassBrowserTool]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-1280
+Top=-101
+Width=1844
+Height=3140
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1844
+ClientHeight=3140
+TBDockHeight=3140
+LRDockWidth=1844
+Dockable=1
+StayOnTop=0
+
+[MetricsView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2336
+Height=1220
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2336
+ClientHeight=1220
+TBDockHeight=4837
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[QAView]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2336
+Height=1220
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2336
+ClientHeight=1220
+TBDockHeight=4837
+LRDockWidth=3562
+Dockable=1
+StayOnTop=0
+
+[frmDesignPreview]
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=0
+Width=2000
+Height=7226
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=7226
+TBDockHeight=5955
+LRDockWidth=2508
+Dockable=1
+StayOnTop=0
+
+[TFileExplorerForm]
+PercentageSizes=1
+Create=1
+Visible=0
+Docked=1
+State=0
+Left=-2866
+Top=-18
+Width=2844
+Height=6199
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2844
+ClientHeight=6199
+TBDockHeight=6199
+LRDockWidth=2844
 Dockable=1
 StayOnTop=0
 
@@ -376,18 +432,18 @@ StayOnTop=0
 PercentageSizes=1
 Create=1
 Visible=0
-Docked=0
+Docked=1
 State=0
-Left=8177
-Top=5269
-Width=2474
-Height=4779
-MaxLeft=-5
-MaxTop=-10
-ClientWidth=2391
-ClientHeight=4404
-TBDockHeight=365
-LRDockWidth=271
+Left=-2944
+Top=249
+Width=273
+Height=366
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=273
+ClientHeight=366
+TBDockHeight=366
+LRDockWidth=273
 Dockable=1
 StayOnTop=0
 Name=120
@@ -402,14 +458,14 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=404
-LRDockWidth=4948
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=407
+LRDockWidth=4953
 Dockable=1
 StayOnTop=0
 
@@ -421,14 +477,14 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=212
-LRDockWidth=7411
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=213
+LRDockWidth=7406
 Dockable=1
 StayOnTop=0
 Column0Width=145
@@ -444,13 +500,13 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=1538
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=1535
 LRDockWidth=3484
 Dockable=1
 StayOnTop=0
@@ -463,33 +519,33 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=2067
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=2063
 LRDockWidth=3484
 Dockable=1
 StayOnTop=0
 
-[TFileExplorerForm]
+[PatchForm]
 PercentageSizes=1
 Create=1
 Visible=0
 Docked=0
 State=0
-Left=609
-Top=846
-Width=2010
-Height=3077
-MaxLeft=-5
+Left=0
+Top=0
+Width=4461
+Height=2591
+MaxLeft=-8
 MaxTop=-10
-ClientWidth=1927
-ClientHeight=2702
-TBDockHeight=6212
-LRDockWidth=2844
+ClientWidth=4336
+ClientHeight=2195
+TBDockHeight=2591
+LRDockWidth=4461
 Dockable=1
 StayOnTop=0
 
@@ -501,14 +557,14 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2339
-Height=1000
+Width=2336
+Height=986
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2339
-ClientHeight=1000
+ClientWidth=2336
+ClientHeight=986
 TBDockHeight=2317
-LRDockWidth=2828
+LRDockWidth=2820
 Dockable=1
 StayOnTop=0
 
@@ -520,14 +576,14 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2339
-Height=1231
+Width=2336
+Height=1220
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2339
-ClientHeight=1231
-TBDockHeight=3212
-LRDockWidth=2828
+ClientWidth=2336
+ClientHeight=1220
+TBDockHeight=3211
+LRDockWidth=2820
 Dockable=1
 StayOnTop=0
 
@@ -539,14 +595,14 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2339
-Height=1231
+Width=2336
+Height=1220
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2339
-ClientHeight=1231
-TBDockHeight=1154
-LRDockWidth=3672
+ClientWidth=2336
+ClientHeight=1220
+TBDockHeight=1159
+LRDockWidth=3680
 Dockable=1
 StayOnTop=0
 Column0Width=314
@@ -558,7 +614,7 @@ SortOrder=4
 ShowHints=1
 ShowChecked=1
 
-[DataExplorer]
+[DataExplorerContainer]
 PercentageSizes=1
 Create=1
 Visible=1
@@ -567,133 +623,32 @@ State=0
 Left=0
 Top=0
 Width=2000
-Height=6779
+Height=7226
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=6779
-TBDockHeight=4875
-LRDockWidth=7151
+ClientHeight=7226
+TBDockHeight=4878
+LRDockWidth=7148
 Dockable=1
 StayOnTop=0
 
-[PropertyInspector]
-PercentageSizes=1
-Create=1
-Visible=1
-Docked=1
-State=0
-Left=0
-Top=419
-Width=1896
-Height=3327
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=1896
-ClientHeight=3327
-TBDockHeight=404
-LRDockWidth=1896
-Dockable=1
-StayOnTop=0
-SplitPos=111
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=Name,OnChange
-ExpandedItems=Anchors=0,BevelEdges=0,Constraints=0,Font=0,Margins=0
-
-[ModelViewTool]
-PercentageSizes=1
-Create=1
-Visible=1
-Docked=1
-State=0
-Left=0
-Top=0
-Width=2000
-Height=6779
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=2000
-ClientHeight=6779
-TBDockHeight=4875
-LRDockWidth=5302
-Dockable=1
-StayOnTop=0
-
-[MetricsView]
+[GraphDrawingModel]
 PercentageSizes=1
 Create=1
 Visible=0
 Docked=1
 State=0
-Left=-367
-Top=-842
-Width=3562
-Height=4827
+Left=249
+Top=781
+Width=2859
+Height=3211
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3562
-ClientHeight=4827
-TBDockHeight=4827
-LRDockWidth=3562
-Dockable=1
-StayOnTop=0
-
-[QAView]
-PercentageSizes=1
-Create=1
-Visible=0
-Docked=1
-State=0
-Left=-367
-Top=-842
-Width=13604
-Height=212
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=13604
-ClientHeight=212
-TBDockHeight=212
-LRDockWidth=13604
-Dockable=1
-StayOnTop=0
-
-[RefactoringsView]
-PercentageSizes=1
-Create=1
-Visible=0
-Docked=1
-State=0
-Left=-367
-Top=-842
-Width=3562
-Height=4827
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=3562
-ClientHeight=4827
-TBDockHeight=4827
-LRDockWidth=3562
-Dockable=1
-StayOnTop=0
-
-[UsagesView]
-PercentageSizes=1
-Create=1
-Visible=0
-Docked=1
-State=0
-Left=-367
-Top=-842
-Width=3562
-Height=2298
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=3562
-ClientHeight=2298
-TBDockHeight=2298
-LRDockWidth=3562
+ClientWidth=2859
+ClientHeight=3211
+TBDockHeight=3211
+LRDockWidth=2859
 Dockable=1
 StayOnTop=0
 
@@ -705,22 +660,23 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=3828
-Height=1413
+Width=3820
+Height=1148
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1413
-TBDockHeight=1548
-LRDockWidth=8740
+ClientWidth=3820
+ClientHeight=1148
+TBDockHeight=1545
+LRDockWidth=8742
 Dockable=1
 StayOnTop=0
-Column0Width=141
+Column0Width=200
 Column1Width=75
 Column2Width=200
 Column3Width=200
-Column4Width=75
+Column4Width=200
 Column5Width=75
+Column6Width=75
 
 [StructureView]
 PercentageSizes=1
@@ -729,34 +685,34 @@ Visible=1
 Docked=1
 State=0
 Left=0
-Top=23
-Width=1896
-Height=3548
+Top=0
+Width=1898
+Height=3598
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1896
-ClientHeight=3548
-TBDockHeight=3673
-LRDockWidth=1896
+ClientWidth=1898
+ClientHeight=3598
+TBDockHeight=3679
+LRDockWidth=1898
 Dockable=1
 StayOnTop=0
 
-[MessageView@EditWindow0]
+[ModelViewTool]
 PercentageSizes=1
 Create=1
 Visible=1
 Docked=1
 State=0
 Left=0
-Top=23
-Width=10000
-Height=1654
+Top=0
+Width=2000
+Height=7226
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
-ClientHeight=1654
-TBDockHeight=1654
-LRDockWidth=4328
+ClientWidth=2000
+ClientHeight=7226
+TBDockHeight=4878
+LRDockWidth=5305
 Dockable=1
 StayOnTop=0
 
@@ -769,18 +725,18 @@ State=0
 Left=0
 Top=0
 Width=1828
-Height=6173
-MaxLeft=-5
+Height=6179
+MaxLeft=-8
 MaxTop=-10
-ClientWidth=1745
-ClientHeight=5798
-TBDockHeight=6173
+ClientWidth=1703
+ClientHeight=5783
+TBDockHeight=6179
 LRDockWidth=1828
 Dockable=1
 StayOnTop=0
 
 [DockHosts]
-DockHostCount=3
+DockHostCount=5
 
 [DockSite0]
 HostDockSite=DockBottomCenterPanel
@@ -790,21 +746,21 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
-Width=2339
-Height=1471
+Left=8
+Top=8
+Width=2336
+Height=1474
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2339
-ClientHeight=1471
-TBDockHeight=1471
-LRDockWidth=2339
+ClientWidth=2336
+ClientHeight=1474
+TBDockHeight=1474
+LRDockWidth=2336
 Dockable=1
 StayOnTop=0
 TabPosition=1
 ActiveTabID=RefactoringForm
-TabDockClients=RefactoringForm,FindReferencsForm,ToDo List,RefactoringsView,UsagesView,QAView,MetricsView
+TabDockClients=RefactoringForm,FindReferencsForm,ToDo List,MetricsView,QAView
 
 [DockSite1]
 HostDockSite=DockBottomPanel
@@ -814,16 +770,16 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=960
-Top=23
-Width=3828
-Height=1654
+Left=0
+Top=18
+Width=3820
+Height=1402
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=3828
-ClientHeight=1654
-TBDockHeight=1654
-LRDockWidth=3828
+ClientWidth=3820
+ClientHeight=1402
+TBDockHeight=1402
+LRDockWidth=3820
 Dockable=1
 StayOnTop=0
 TabPosition=1
@@ -839,18 +795,66 @@ Visible=1
 Docked=1
 State=0
 Left=0
-Top=23
+Top=18
 Width=2000
-Height=4596
+Height=4644
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2000
-ClientHeight=4596
-TBDockHeight=6144
+ClientHeight=4644
+TBDockHeight=9014
 LRDockWidth=2000
 Dockable=1
 StayOnTop=0
 TabPosition=1
 ActiveTabID=ProjectManager
-TabDockClients=ProjectManager,ModelViewTool,DataExplorer
+TabDockClients=ProjectManager,ModelViewTool,DataExplorerContainer,frmDesignPreview,TFileExplorerForm
+
+[DockSite3]
+HostDockSite=DockLeftPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=18
+Width=1898
+Height=3598
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=1898
+ClientHeight=3598
+TBDockHeight=9014
+LRDockWidth=1898
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=StructureView
+TabDockClients=StructureView,ClassBrowserTool
+
+[DockSite4]
+HostDockSite=DockRightPanel
+DockSiteType=1
+PercentageSizes=1
+Create=1
+Visible=1
+Docked=1
+State=0
+Left=0
+Top=497
+Width=2000
+Height=3028
+MaxLeft=-1
+MaxTop=-1
+ClientWidth=2000
+ClientHeight=3028
+TBDockHeight=9014
+LRDockWidth=2000
+Dockable=1
+StayOnTop=0
+TabPosition=1
+ActiveTabID=ToolForm
+TabDockClients=ToolForm,TemplateView
 

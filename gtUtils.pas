@@ -2,20 +2,17 @@ unit gtUtils;
 
 interface
 
-Uses
- gtLogFile;
 
 function MinutesToString(aMinutes: Int64): ShortString;
 
 function DataFileName: string;
 
-var
- gLog: TgtLogFile;
+function IsRemoteSession: Boolean;
 
 implementation
 
 Uses
- SysUtils;
+ SysUtils, WinAPI.Windows;
 
 function MinutesToString(aMinutes: Int64): ShortString;
 var
@@ -41,9 +38,11 @@ begin
  Result := ChangeFileExt(ParamStr(0), '.dat');
 end;
 
+function IsRemoteSession: Boolean;
+const
+  sm_RemoteSession = $1000;
+begin
+ Result := GetSystemMetrics(sm_RemoteSession) <> 0;
+end;
 
-initialization
- gLog:= TgtLogFile.Create;
-finalization
- FreeAndNil(gLog);
 end.

@@ -52,7 +52,7 @@ end;
 
 procedure TgtLogFile.Msg(const aText: String);
 var
- l_B: String;
+ l_B: AnsiString;
 begin
   l_B:= FormatDateTime('dd-mm-yyyy hh:nn:ss:zzz ', Now) + aText + #13#10;
   f_Stream.Write(l_B[1], Length(l_B));

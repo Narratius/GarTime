@@ -61,14 +61,11 @@ object IssueOpenDialog: TIssueOpenDialog
     TabOrder = 2
     OnChange = IssuesComboChange
   end
-  object TitlesCombo: TComboBox
+  object TitleEdit: TEdit
     Left = 16
-    Top = 75
+    Top = 72
     Width = 265
     Height = 21
-    ItemHeight = 13
     TabOrder = 3
-    Text = 'TitlesCombo'
-    OnChange = TitlesComboChange
   end
 end

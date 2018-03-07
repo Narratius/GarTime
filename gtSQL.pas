@@ -43,7 +43,7 @@ implementation
 
 Uses
  gtUtils,
- SysUtils, XMLDoc, XMLIntf, DateUtils, StrUtils;
+ Forms, SysUtils, XMLDoc, XMLIntf, DateUtils, StrUtils;
 
 
 function lp_MakeDate(aDate: TDateTime): String;
@@ -179,6 +179,8 @@ begin
 end;
 
 procedure TgtSQLTimer.StartPeriod(aDate: TDateTime);
+var
+ l_D, l_T: String;
 begin
   with f_DB do
   begin
@@ -187,9 +189,11 @@ begin
     BeginTransaction;
     try
       ParamsClear;
-      AddParamText(':StartDate', lp_MakeDate(aDate));
-      AddParamText(':StartTime', lp_MakeTime(aDate));
-      ExecSQL('INSERT INTO TimeSheet (StartDate, StartTime) Values(:StartDate, :StartTime)');
+      l_D:= lp_MakeDate(aDate);
+      l_T:= lp_MakeTime(aDate);
+      AddParamText(':SDate', l_D);
+      AddParamText(':STime', l_T);
+      ExecSQL('INSERT INTO TimeSheet (StartDate, StartTime) Values(:SDate, :STime)');
       Commit;
     except
       Rollback;
@@ -274,6 +278,7 @@ begin
                    end;
                   end; // for k;
                 end; // StartsDay
+                Application.ProcessMessages;
               end; // for j
             end; // for i
           end; // l_Months <> nil
